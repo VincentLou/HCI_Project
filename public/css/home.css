@@ -19,6 +19,13 @@
      text-align: center ;
 }
 
+.time{
+     text-align: center ;
+     margin-left: auto ;
+     margin-right: auto ;
+     font-size:250%;
+}
+
 .button{
      display: block;
      width: 70%;
@@ -27,27 +34,6 @@
      margin-right: auto ;
 }
 
-.jumbotron {
-	position: relative;
-	background: none;
-}
-
-.jumbotron:after {
-     content:"";
-     background: url("../images/lorempixel.jumbotron.jpeg");
-     opacity: 0.2;
-     top: 0;
-     left: 0;
-     bottom: 0;
-     right: 0;
-     position: absolute;
-     z-index: -1;	
-}
-
 .jumbotron p {
      color: #6e6e6e;
-}
-
-.project a {
-     text-align: center;
 }
