@@ -1,4 +1,2 @@
-lab4
-====
+HCI project
 
-Lab 4: Programming with Javascript
