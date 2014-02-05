@@ -43,7 +43,8 @@
 		$('.sub_header2').hide();
 		var newYear = new Date(); 
 		newYear = new Date(newYear.getFullYear() + 48, 1 - 1, 1);
-		$('.sub_header2').countdown({until: newYear, format: 'YOWDHMS'});
+		$('.sub_header2').countdown({until: newYear, compact: true, 
+    		format: 'YOWDHMS', description: ''});
 		$('.sub_header1').click(function() {
   			$('.sub_header1').hide();
   			$('.sub_header2').show();
