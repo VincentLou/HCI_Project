@@ -28,12 +28,23 @@
      float: right;
 }
 
-.sub_header{
+.sub_header1{
      text-align: center ;
      height: 80px;
      width: 200px;
      margin-left: auto ;
+     margin-top: 20px ;
      margin-right: auto ;
+}
+
+.sub_header2{
+     text-align: center ;
+     height: 60px;
+     width: 350px;
+     margin-left: auto ;
+     margin-top: 20px ;
+     margin-right: auto ;
+     margin-bottom: 30px ;
 }
 
 .button{
