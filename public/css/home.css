@@ -49,7 +49,17 @@
 
 .button{
      display: block;
+     font-size: 2em;
      width: 70%;
+     margin-top: 10px;
+     margin-left: auto ;
+     margin-right: auto ;
+}
+
+.smallbutton{
+     display: block;
+     font-size: 2em;
+     width: 49%;
      margin-top: 10px;
      margin-left: auto ;
      margin-right: auto ;
@@ -57,4 +67,10 @@
 
 .jumbotron p {
      color: #6e6e6e;
+}
+
+body
+{
+     background-image:url('../images/crossword.png');
+     background-color:#cccccc;
 }
