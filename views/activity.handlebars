@@ -56,7 +56,7 @@
     <div class="container">
         <!-- h1 through h6 are headers. The higher the number, the smaller the header -->
         <!-- p means paragraph -->
-        <h1 class = "header">LifeUP | Log Activity</h1>
+        <h1 class = "header">LifeUP | My Activity</h1>
         <!-- <div class = "sub_header1">
             <img class = "image" src="images/uptrans.png" />
             <div class = "time">83 years</div>
@@ -68,67 +68,11 @@
             <option value="veggies">Ate veggies</option>
             <option value="slept">Slept enough</option>
         </select> -->
-
-        <!-- checklist -->
-
-        <div id='activityCheckList'></div>
-
-        <!-- <br/>
-        <h3>Selection</h3>
-        <div id='selectedItems'></div>
-
-        <br/><br/>
-        <a href='#' id='populate'>Populate Beverages</a> -->
-
-        <script type="text/javascript">
-            $(function() {
-                var items = [{text: 'I ran', value: '1'},
-                             {text: 'I slept enough', value: '2'},
-                             {text: 'I ate veggies', value: '3'},
-                             {text: 'I made new friends', value: '4'},
-                             {text: 'I laughed', value: '5'},
-                             {text: 'I worked out', value: '6'},
-                             {text: 'I flossed', value: '7'},
-                             {text: 'I meditated', value: '8'},
-                             {text: 'I was thankful', value: '9'}
-                            ];
-
-                $('#activityCheckList').checkList({
-                    listItems: items,
-                    onChange: selChange
-                });
-
-                function selChange(){
-                    var selection = $('#activityCheckList').checkList('getSelection');
-                    
-                    $('#selectedItems').text(JSON.stringify(selection));
-                }
-
-                // $('#populate').click(function(){
-                //     var bevs =  [{text: 'Coca Cola', value: '1'},
-                //                  {text: 'Pepsi', value: '2'},
-                //                  {text: 'Sprite', value: '3'},
-                //                  {text: 'Fanta', value: '4'},
-                //                  {text: 'Dr Pepper', value: '5'},
-                //                  {text: 'Mineral Water', value: '6'},
-                //                  {text: 'Tea', value: '7'},
-                //                  {text: 'Ice-tea', value: '8'},
-                //                  {text: 'poop', value: '9'},
-                //                  {text: 'Dr bottles', value: '10'},
-                //                  {text: 'Iran Water', value: '11'},
-                //                  {text: 'Creampaste', value: '12'},
-                //                  {text: 'Ice-monster', value: '13'},
-                //                  {text: 'Cookies', value: '14'}
-                //                 ];
-                //     $('#activityCheckList').checkList('setData', bevs);
-                // });
-            });
-        </script>
-
-        <div class="btn-group container">
-            <div class="btn btn-default btn-large smallbutton pull-left" onclick="window.location='/';">Cancel</div>
-            <div class="btn btn-primary btn-large smallbutton pull-right" onclick="window.location='/';">Log</div>
+        <div class = "centralimage">
+            <img class = "img-responsive" src="images/Analysisgraphs.png" />
         </div>
+
+        <div class="btn btn-primary btn-large button" onclick="window.location='/';">Done</div>
 
     <script>
     //     $('.sub_header2').hide();
