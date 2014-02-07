@@ -30,15 +30,14 @@
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<h1 class = "header">LifeUP</h1>
-		<div class = "sub_header1">
-			<img class = "image" src="images/uptrans.png" />
-			<div class = "time">83 years</div>
+		<div class = "login">
+			<div>User Name:</div>
+			<input></input>
+			<div>PassWord:</div>
+			<input></input>
 		</div>
-		<div class = "sub_header2"> </div>
-		<div class="btn btn-primary btn-large button" onclick="window.location='/log';">Log</div>
-		<div class="btn btn-primary btn-large button" onclick="window.location='/activity';">My Activity</div>
-		<div href="#" class="btn btn-primary btn-large button" onclick="window.location='/improve';">Improve</div>
-
+		<div class="btn btn-primary login_button" onclick="window.location='/index';">Login</div>
+	</div>
 	<script>
 		$('.sub_header2').hide();
 		var newYear = new Date(); 

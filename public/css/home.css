@@ -23,9 +23,19 @@
      width: 60px;
      float: left;
 }
+
 .time{
      font-size:250%;
      float: right;
+}
+
+.login{
+     text-align: center ;
+     height: 80px;
+     width: 200px;
+     margin-left: auto ;
+     margin-top: 20px ;
+     margin-right: auto ;
 }
 
 .sub_header1{
@@ -47,9 +57,38 @@
      margin-bottom: 10px ;
 }
 
+.centralimage{
+     display:block;
+     text-align: center;
+     height: 70%;
+     width: 70%;
+     margin-left: auto ;
+     margin-top: 20px ;
+     margin-right: auto ;
+     margin-bottom: 10px ;     
+}
+
 .button{
      display: block;
+     font-size: 2em;
      width: 70%;
+     margin-top: 10px;
+     margin-left: auto ;
+     margin-right: auto ;
+}
+
+.login_button{
+     display: block;
+     width: 10%;
+     margin-top: 20px;
+     margin-left: auto ;
+     margin-right: auto ;
+}
+
+.smallbutton{
+     display: block;
+     font-size: 2em;
+     width: 49.5%;
      margin-top: 10px;
      margin-left: auto ;
      margin-right: auto ;
@@ -57,4 +96,10 @@
 
 .jumbotron p {
      color: #6e6e6e;
+}
+
+body
+{
+     background-image:url('../images/crossword.png');
+     background-color:#cccccc;
 }
