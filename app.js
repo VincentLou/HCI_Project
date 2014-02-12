@@ -13,8 +13,8 @@ var index = require('./routes/index');
 var log = require('./routes/log');
 var improve = require('./routes/improve');
 var activity = require('./routes/activity');
-// Example route
-// var user = require('./routes/user');
+
+// var lifeExp = 83;
 
 var app = express();
 

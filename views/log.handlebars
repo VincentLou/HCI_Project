@@ -22,6 +22,8 @@
     <script src="checkList/jquery-ui-1.8.23.custom.min.js"></script>
     <script src="checkList/jquery.ui.checkList.js"></script>
 
+    <script type="text/javascript" src="js/vars.js"></script>
+
     <link rel="stylesheet" type="text/css" href="checkList/ui-lightness/jquery-ui-1.8.23.custom.css" />
     <link rel="stylesheet" type="text/css" href="checkList/checkList.css" />
     <style type='text/css'>     
@@ -81,16 +83,19 @@
         <a href='#' id='populate'>Populate Beverages</a> -->
 
         <script type="text/javascript">
+
+            var lifeExpPreview = lifeExp;
+
             $(function() {
-                var items = [{text: 'I ran', value: '1'},
+                var items = [{text: 'I ran', value: '3.5'},
                              {text: 'I slept enough', value: '2'},
                              {text: 'I ate veggies', value: '3'},
-                             {text: 'I made new friends', value: '4'},
-                             {text: 'I laughed', value: '5'},
-                             {text: 'I worked out', value: '6'},
-                             {text: 'I flossed', value: '7'},
-                             {text: 'I meditated', value: '8'},
-                             {text: 'I was thankful', value: '9'}
+                             {text: 'I made new friends', value: '1'},
+                             {text: 'I laughed', value: '1'},
+                             {text: 'I worked out', value: '1.5'},
+                             {text: 'I flossed', value: '.5'},
+                             {text: 'I meditated', value: '2'},
+                             {text: 'I was thankful', value: '1.5'}
                             ];
 
                 $('#activityCheckList').checkList({
@@ -100,50 +105,55 @@
 
                 function selChange(){
                     var selection = $('#activityCheckList').checkList('getSelection');
-                    
-                    $('#selectedItems').text(JSON.stringify(selection));
-                }
 
-                // $('#populate').click(function(){
-                //     var bevs =  [{text: 'Coca Cola', value: '1'},
-                //                  {text: 'Pepsi', value: '2'},
-                //                  {text: 'Sprite', value: '3'},
-                //                  {text: 'Fanta', value: '4'},
-                //                  {text: 'Dr Pepper', value: '5'},
-                //                  {text: 'Mineral Water', value: '6'},
-                //                  {text: 'Tea', value: '7'},
-                //                  {text: 'Ice-tea', value: '8'},
-                //                  {text: 'poop', value: '9'},
-                //                  {text: 'Dr bottles', value: '10'},
-                //                  {text: 'Iran Water', value: '11'},
-                //                  {text: 'Creampaste', value: '12'},
-                //                  {text: 'Ice-monster', value: '13'},
-                //                  {text: 'Cookies', value: '14'}
-                //                 ];
-                //     $('#activityCheckList').checkList('setData', bevs);
-                // });
+                    var lifeIncrease = 0;
+
+                    for (i=0;i<selection.length;++i) 
+                    {
+                        lifeIncrease += Number(selection[i].value);
+                    }
+
+                    lifeExpPreview = lifeExp + lifeIncrease;
+
+                    $('#lifespan').text(lifeExpPreview + ' years');
+                }
             });
         </script>
 
+        <div class = "sub_header1">
+            <img class = "image" src="images/uptrans.png" />
+            <div class = "time" id="lifespan">83 years</div>
+        </div>
+        <div class = "sub_header2"> </div>
+
         <div class="btn-group container">
-            <div class="btn btn-default btn-large smallbutton pull-left" onclick="window.location='/';">Cancel</div>
-            <div class="btn btn-primary btn-large smallbutton pull-right" onclick="window.location='/';">Log</div>
+            <div class="btn btn-default btn-large smallbutton pull-left" onclick="window.location='/index';">Cancel</div>
+            <div class="btn btn-primary btn-large smallbutton pull-right" onclick="LogFunction()">Log</div>
         </div>
 
     <script>
-    //     $('.sub_header2').hide();
-    //     var newYear = new Date(); 
-    //     newYear = new Date(newYear.getFullYear() + 48, 1 - 1, 1);
-    //     $('.sub_header2').countdown({until: newYear, compact: true, 
-    //         format: 'YOWDHMS', description: ''});
-    //     $('.sub_header1').click(function() {
-    //         $('.sub_header1').hide();
-    //         $('.sub_header2').show();
-    //     });
-    //     $('.sub_header2').click(function() {
-    //         $('.sub_header2').hide();
-    //         $('.sub_header1').show();
-    //     });
+        function LogFunction()
+        {
+            lifeExp = lifeExpPreview; // doesn't actually save yet becuase refresh.
+            window.location='/index';
+        }
+    </script>
+
+    <script>
+        $('#lifespan').text(lifeExp + ' years');
+        $('.sub_header2').hide();
+        var newYear = new Date(); 
+        newYear = new Date(newYear.getFullYear() + lifeExp - currentAge, 1 - 1, 1);
+        $('.sub_header2').countdown({until: newYear, compact: true, 
+            format: 'YOWDHMS', description: ''});
+        $('.sub_header1').click(function() {
+            $('.sub_header1').hide();
+            $('.sub_header2').show();
+        });
+        $('.sub_header2').click(function() {
+            $('.sub_header2').hide();
+            $('.sub_header1').show();
+        });
     </script>
 </body>
 </html>
