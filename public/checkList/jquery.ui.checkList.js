@@ -119,6 +119,20 @@
 			o.listItems = dataModel;
 			self.loadList();
 			self._selChange();
+		},
+
+		showAll: function(){
+			var self = this, o = self.options, el = self.element;
+			
+			o.objTable.find('.chk').each(function(){	
+				// if($(this).attr('data-text').toLowerCase().indexOf(filter.toLowerCase())>-1)
+				// {
+				$(this).parent().parent().show(o.effect);
+				// }
+				// else{
+				// 	$(this).parent().parent().hide(o.effect);
+				// }
+			});
 		}
 	});
 })(jQuery); 
