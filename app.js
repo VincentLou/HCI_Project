@@ -11,7 +11,6 @@ var handlebars = require('express3-handlebars');
 var login = require('./routes/login');
 var index = require('./routes/index');
 var log = require('./routes/log');
-var improve = require('./routes/improve');
 var activity = require('./routes/activity');
 
 // var lifeExp = 83;
@@ -42,7 +41,6 @@ if ('development' == app.get('env')) {
 app.get('/', login.view);
 app.get('/index', index.view);
 app.get('/log', log.view);
-app.get('/improve', improve.view);
 app.get('/activity', activity.view);
 // Example route
 // app.get('/users', user.list);
