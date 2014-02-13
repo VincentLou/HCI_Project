@@ -85,9 +85,9 @@
         <a href='#' id='populate'>Populate Beverages</a> -->
 
         <script type="text/javascript">
-
+            var lifeExp = {{expLifeSpan}};
             var lifeExpPreview = lifeExp;
-
+            var currentAge = {{curAge}};
             $(function() {
                 var items = [{text: 'I ran', value: '3'},
                              {text: 'I slept enough', value: '2'},
@@ -158,7 +158,7 @@
 
         <div class = "sub_header1">
             <img class = "image" src="images/uptrans.png" />
-            <div class = "time" id="lifespan">83 years</div>
+            <div class = "time" id="lifespan">{{expLifeSpan}} years</div>
         </div>
         <div class = "sub_header2"> </div>
 
@@ -176,6 +176,7 @@
     </script>
 
     <script>
+        var currentAge = {{curAge}};
         $('#lifespan').text(lifeExp + ' years');
         if (displayStyle == 1)
           $('.sub_header2').hide();
