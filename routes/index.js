@@ -9,14 +9,20 @@ exports.view = function(req, res){
   var users = db.collection('users');
   //console.log(users);
   users.find({id:1}, function(err, doc) {
-    console.log(doc);
-    var expLifeSpan = doc[0].ExpLifeSpan;
-    var curAge = doc[0].age;
-
-   	res.render('index', {
-      'expLifeSpan': expLifeSpan,
-  	  'curAge': curAge
-    });
+  	//console.log(doc.length);
+    if(doc.length > 0){
+   	  var expLifeSpan = doc[0].ExpLifeSpan;
+      var curAge = doc[0].age;
+      res.render('index', {
+        'expLifeSpan': expLifeSpan,
+  	    'curAge': curAge
+      });
+    } else {
+	  users.insert({id:1, name:"test user", ExpLifeSpan:90, age:23});
+      res.render('index', {
+      	'expLifeSpan': 90,
+  	  	'curAge': 23
+      });
+    }
   });
-
 };
