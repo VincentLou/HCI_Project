@@ -22,11 +22,18 @@
      height: 50px;
      width: 60px;
      float: left;
+     margin-left: 20px;
+     margin-right: auto;
+     margin-top:5%;
+     margin-bottom:auto;
 }
 
 .time{
      font-size:250%;
-     float: right;
+     /*float: right;*/
+     vertical-align:bottom;
+     margin-top:5%;
+     margin-bottom:auto;
 }
 
 .login{
@@ -40,11 +47,16 @@
 
 .sub_header1{
      text-align: center ;
+     /*vertical-align:bottom;*/
      height: 80px;
      width: 250px;
      margin-left: auto ;
      margin-top: 20px ;
      margin-right: auto ;
+     margin-bottom: 10px ;
+     border:1px solid #428bca;
+     border-radius:25px;
+     cursor: pointer;
 }
 
 .sub_header2{
@@ -55,6 +67,9 @@
      margin-top: 20px ;
      margin-right: auto ;
      margin-bottom: 10px ;
+     border:1px solid #428bca;
+     border-radius:25px;
+     cursor: pointer;
 }
 
 .centralimage{

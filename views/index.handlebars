@@ -32,7 +32,7 @@
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<h1 class = "header">LifeUP</h1>
-		<div class = "sub_header1">
+		<div class = "sub_header1"><a href="#"></a>
 			<img class = "image" src="images/uptrans.png" />
 			<div class = "time" id="lifespan">83 years</div>
 		</div>
@@ -43,7 +43,10 @@
 
 	<script>
         $('#lifespan').text(lifeExp + ' years');
-		$('.sub_header2').hide();
+        if (displayStyle == 1)
+		  $('.sub_header2').hide();
+        else if (displayStyle == 2)
+          $('.sub_header1').hide();
 		var newYear = new Date(); 
 		newYear = new Date(newYear.getFullYear() + lifeExp - currentAge, 1 - 1, 1);
 		$('.sub_header2').countdown({until: newYear, compact: true, 
@@ -51,10 +54,12 @@
 		$('.sub_header1').click(function() {
   			$('.sub_header1').hide();
   			$('.sub_header2').show();
+            displayStyle = 2;
 		});
 		$('.sub_header2').click(function() {
   			$('.sub_header2').hide();
   			$('.sub_header1').show();
+            displayStyle = 1;
 		});
 	</script>
 </body>
