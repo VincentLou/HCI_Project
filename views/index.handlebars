@@ -34,14 +34,15 @@
 		<h1 class = "header">LifeUP</h1>
 		<div class = "sub_header1"><a href="#"></a>
 			<img class = "image" src="images/uptrans.png" />
-			<div class = "time" id="lifespan">83 years</div>
+			<div class = "time" id="lifespan">{{expLifeSpan}} years</div>
 		</div>
 		<div class = "sub_header2"> </div>
 		<div class="btn btn-primary btn-large button" onclick="window.location='/log';">Log</div>
 		<div class="btn btn-primary btn-large button" onclick="window.location='/activity';">My Activity</div>
 
 	<script>
-        $('#lifespan').text(lifeExp + ' years');
+		var lifeExp = {{expLifeSpan}};
+		var currentAge = {{curAge}};
         if (displayStyle == 1)
 		  $('.sub_header2').hide();
         else if (displayStyle == 2)

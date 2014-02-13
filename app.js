@@ -38,8 +38,8 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
-app.get('/', login.view);
-app.get('/index', index.view);
+//app.get('/', login.view); remove login for now
+app.get('/', index.view);
 app.get('/log', log.view);
 app.get('/activity', activity.view);
 // Example route
