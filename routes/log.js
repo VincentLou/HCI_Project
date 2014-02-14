@@ -8,8 +8,11 @@ exports.view = function(req, res){
   var mongojs = require('mongojs');
   var db = mongojs('test');
   var users = db.collection('users');
-  users.find({id:1}, function(err, doc) {
+  users.find({}, function(err, doc) {
+
+  	console.log(err);
     if(doc!=null && doc.length > 0){
+      console.log("db works");
    	  var expLifeSpan = doc[0].ExpLifeSpan;
       var curAge = doc[0].age;
       res.render('log', {

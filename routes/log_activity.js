@@ -1,5 +1,5 @@
  
- exports.add = function(request, res) {
+exports.add = function(request, res) {
  	console.log("log_activity");
  	var actions = request.body.selections.split(",");
  	var lifeExp = request.body.lifeExp;
