@@ -8,8 +8,9 @@ exports.view = function(req, res){
   var db = mongojs('test');
   var users = db.collection('users');
   console.log("click on index");
-  users.find({id:1}, function(err, doc) {
+  users.find({}, function(err, doc) {
   	//console.log(doc.length);
+  	console.log(err);
     if(doc!=null && doc.length > 0){
       console.log("db works");
    	  var expLifeSpan = doc[0].ExpLifeSpan;
