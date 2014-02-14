@@ -17,9 +17,10 @@ exports.view = function(req, res){
   	    'curAge': curAge
       });
     } else {
-	  users.insert({id:1, name:"test user", ExpLifeSpan:90, age:23});
+      console.log("insert again");
+	  users.insert({id:1, name:"test user", ExpLifeSpan:70, age:23});
       res.render('index', {
-      	'expLifeSpan': 90,
+      	'expLifeSpan': 70,
   	  	'curAge': 23
       });
     }

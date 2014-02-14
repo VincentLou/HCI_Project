@@ -12,7 +12,8 @@ var login = require('./routes/login');
 var index = require('./routes/index');
 var log = require('./routes/log');
 var activity = require('./routes/activity');
-
+var log_activity = require('./routes/log_activity');
+console.log(log_activity.add);
 // var lifeExp = 83;
 
 var app = express();
@@ -41,7 +42,9 @@ if ('development' == app.get('env')) {
 //app.get('/', login.view); remove login for now
 app.get('/', index.view);
 app.get('/log', log.view);
+app.post('/log_activity', log_activity.add);
 app.get('/activity', activity.view);
+
 // Example route
 // app.get('/users', user.list);
 
