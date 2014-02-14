@@ -7,6 +7,7 @@ exports.view = function(req, res){
   var mongojs = require('mongojs');
   var db = mongojs('test');
   var users = db.collection('users');
+  console.log("click on index");
   users.find({id:1}, function(err, doc) {
   	//console.log(doc.length);
     if(doc!=null && doc.length > 0){
@@ -17,6 +18,7 @@ exports.view = function(req, res){
   	    'curAge': curAge
       });
     } else {
+      console.log(doc);
       console.log("insert again");
 	  users.insert({id:1, name:"test user", ExpLifeSpan:70, age:23});
       res.render('index', {
