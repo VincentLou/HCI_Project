@@ -154,8 +154,6 @@
             $("#activityCheckList").clearable();
         </script>
 
-
-
         <div class = "sub_header1">
             <img class = "image" src="images/uptrans.png" />
             <div class = "time" id="lifespan">{{expLifeSpan}} years</div>
@@ -168,10 +166,26 @@
         </div>
 
     <script>
-        function LogFunction()
-        {
+
+        function LogFunction() {
             lifeExp = lifeExpPreview; // doesn't actually save yet becuase refresh.
-            window.location='/';
+            var selections = $('#activityCheckList').checkList('getSelection');
+            var action_list = '';
+
+            if(selections.length==0){
+                return;
+            }
+            for (i=0;i<selections.length-1;++i) {
+                action_list = action_list + selections[i].text + ",";
+            }
+            action_list = action_list + selections[selections.length-1].text;
+            $.post("log_activity", {"selections":action_list, "lifeExp": lifeExp}, function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    console.log(body);
+                }
+                window.location='/';
+            });
+            
         }
     </script>
 

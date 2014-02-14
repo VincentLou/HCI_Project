@@ -9,7 +9,6 @@ exports.view = function(req, res){
   var db = mongojs('test');
   var users = db.collection('users');
   users.find({id:1}, function(err, doc) {
-  	//console.log(doc.length);
     if(doc!=null && doc.length > 0){
    	  var expLifeSpan = doc[0].ExpLifeSpan;
       var curAge = doc[0].age;
@@ -18,9 +17,10 @@ exports.view = function(req, res){
   	    'curAge': curAge
       });
     } else {
-	  users.insert({id:1, name:"test user", ExpLifeSpan:90, age:23});
+      console.log("insert again");
+	  users.insert({id:1, name:"test user", ExpLifeSpan:70, age:23});
       res.render('log', {
-      	'expLifeSpan': 90,
+      	'expLifeSpan': 70,
   	  	'curAge': 23
       });
     }
