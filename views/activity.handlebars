@@ -11,6 +11,8 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 
+    <script src="/js/Chart/Chart.js"></script>
+
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
     <script type="text/javascript" src="js/jquery.plugin.js"></script> 
@@ -68,12 +70,68 @@
             <option value="veggies">Ate veggies</option>
             <option value="slept">Slept enough</option>
         </select> -->
-        <div class = "centralimage">
-            <img class = "img-responsive" src="images/Analysisgraphs.png" />
-        </div>
+        <h3 class="header">This Month</h3>
+        <canvas class="myChart" id="myChart" width="400" height="400" align="center"></canvas>
+        <h3 class="header">Positive Habit Percentage Logged</h3>
+        <canvas class="myChart" id="myChart2" width="400" height="400" align="center"></canvas>        
 
         <div class="btn btn-primary btn-large button" onclick="window.location='/';">Done</div>
 
+    <script type="text/javascript">
+        //Get the context of the canvas element we want to select
+    var ctx = document.getElementById("myChart").getContext("2d");
+
+    var time = new Date();
+    var monthNumber = time.getMonth();
+    var day = time.getDate();
+    var months=new Array();
+    months[0]="January";
+    months[1]="February";
+    months[2]="March";
+    months[3]="April";
+    months[4]="May";
+    months[5]="June";
+    months[6]="July";
+    months[7]="August";
+    months[8]="September";
+    months[9]="October";
+    months[10]="November";
+    months[11]="December";
+    var monthName = months[monthNumber];
+    console.log(monthName);
+    console.log(time);
+    console.log(day);
+
+    var data = {
+    labels : ["February 1","2","3","4","5","6","7","8","9","10","11","12","13"],
+    datasets : [
+        {
+            fillColor : "rgba(151,187,205,0.5)",
+            strokeColor : "rgba(151,187,205,1)",
+            pointColor : "rgba(151,187,205,1)",
+            pointStrokeColor : "#fff",
+            data : [83,84,82,87,90,86,81,82,83,82,83,84,85]
+        }
+    ]
+}
+    var myNewChart = new Chart(ctx).Line(data);
+    </script>
+    <script type="text/javascript">
+        var ctx = document.getElementById("myChart2").getContext("2d");
+        var data2 = {
+    labels : ["Eating Habits","Flossing","Sleeping","Exercising","Emotional Health", "Social Health"],
+    datasets : [
+        {
+            fillColor : "rgba(151,187,205,0.5)",
+            strokeColor : "rgba(151,187,205,1)",
+            pointColor : "rgba(151,187,205,1)",
+            pointStrokeColor : "#fff",
+            data : [28,48,40,96,27, 84]
+        }
+    ]
+}
+        var myNewChart2 = new Chart(ctx).Radar(data2);
+    </script>
     <script>
     //     $('.sub_header2').hide();
     //     var newYear = new Date(); 
