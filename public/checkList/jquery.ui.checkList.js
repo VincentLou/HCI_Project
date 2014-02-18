@@ -33,6 +33,21 @@
 			// toolbar.append(chkAll);
 			toolbar.append($('<div/>').addClass('filterbox').append(txtfilter));
 
+			var helper = $('<span class="clear-helper">&times;</span>');
+            toolbar.append(helper);
+            container.on('keyup', function() {
+                if(txtfilter.val()) {
+                    helper.css('display', 'inline');
+                } else helper.hide();
+            });
+            helper.click(function(){
+                txtfilter.val("");
+                // $('#activityCheckList').checkList('showAll');
+                self.showAll();
+
+                helper.hide();
+            });
+
 			// generate list table object
 			o.objTable = $('<table/>').addClass('table');
 			
