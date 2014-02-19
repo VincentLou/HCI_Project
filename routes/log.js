@@ -2,6 +2,7 @@
 /*
  * GET log page.
  */
+var groups = require('../groups.json');
 
 exports.view = function(req, res){
   console.log('clicked on log');
@@ -15,17 +16,27 @@ exports.view = function(req, res){
       console.log("db works");
    	  var expLifeSpan = doc[0].ExpLifeSpan;
       var curAge = doc[0].age;
-      res.render('log', {
-        'expLifeSpan': expLifeSpan,
-  	    'curAge': curAge
-      });
+      data = groups;
+      data['expLifeSpan'] = expLifeSpan;
+      data['curAge'] = curAge;
+      res.render('log', data
+      // {
+      //   'expLifeSpan': expLifeSpan,
+  	   //  'curAge': curAge
+      // }
+      );
     } else {
       console.log("insert again");
 	  users.insert({id:1, name:"test user", ExpLifeSpan:70, age:23});
-      res.render('log', {
-      	'expLifeSpan': 70,
-  	  	'curAge': 23
-      });
+      data = groups;
+      data['expLifeSpan'] = 70;
+      data['curAge'] = 23;
+      res.render('log', data
+      // {
+      // 	'expLifeSpan': 70,
+  	  	// 'curAge': 23
+      // }
+      );
     }
   });
 };

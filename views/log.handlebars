@@ -64,7 +64,18 @@
 
     <div id="jstree">
       <ul>
-        <li id="diet">Diet
+        {{#each groups}}
+        <li id="{{id}}">{{name}}
+          <ul>
+            {{#each items}}
+            <li id="{{id}}">{{name}}</li>
+            {{/each}}
+          </ul>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+        <!-- <li id="diet">Diet
           <ul>
             <li id="veggies">I ate veggies</li>
             <li id="water">I drank water</li>
@@ -94,49 +105,60 @@
         </li>
         <li id="floss">Flossing</li>
       </ul>
-    </div>
+    </div> -->
+
     <!--button>demo button</button-->
 
     <script>
+      // var lifeIncreases = {
+      //   diet: 0,
+      //   veggies: 3,
+      //   water: 1,
+      //   hungry: 3,
+      //   exercise: 0,
+      //   run: 2,
+      //   gym: 2,
+      //   move: 2,
+      //   social: 0,
+      //   laugh: 2,
+      //   talk: 1,
+      //   friends: 1,
+      //   lifestyle: 0,
+      //   sleep: 3,
+      //   meditate: 2,
+      //   thankful: 1,
+      //   floss: 1
+      // };
+
       var lifeIncreases = {
-        diet: 0,
-        veggies: 3,
-        water: 1,
-        hungry: 3,
-        exercise: 0,
-        run: 2,
-        gym: 2,
-        move: 2,
-        social: 0,
-        laugh: 2,
-        talk: 1,
-        friends: 1,
-        lifestyle: 0,
-        sleep: 3,
-        meditate: 2,
-        thankful: 1,
-        floss: 1
+        {{#each groups}}
+          "{{id}}": {{value}},
+          {{#each items}}
+            "{{id}}": {{value}},
+          {{/each}}
+        {{/each}}
+        "lastItem": 0
       };
 
-        function LogFunction() {
-            lifeExp = lifeExpPreview; // doesn't actually save yet becuase refresh.
-            var selections = $('#activityCheckList').checkList('getSelection');
-            var action_list = '';
+      /*function LogFunction() {
+          lifeExp = lifeExpPreview; // doesn't actually save yet becuase refresh.
+          var selections = $('#activityCheckList').checkList('getSelection');
+          var action_list = '';
 
-            if(selections.length==0){
-                return;
-            }
-            for (i=0;i<selections.length-1;++i) {
-                action_list = action_list + selections[i].text + ",";
-            }
-            action_list = action_list + selections[selections.length-1].text;
-            $.post("log_activity", {"selections":action_list, "lifeExp": lifeExp}, function (error, response, body) {
-                if (!error && response.statusCode == 200) {
-                    console.log(body);
-                }
-                window.location='/';
-            });
-        }
+          if(selections.length==0){
+              return;
+          }
+          for (i=0;i<selections.length-1;++i) {
+              action_list = action_list + selections[i].text + ",";
+          }
+          action_list = action_list + selections[selections.length-1].text;
+          $.post("log_activity", {"selections":action_list, "lifeExp": lifeExp}, function (error, response, body) {
+              if (!error && response.statusCode == 200) {
+                  console.log(body);
+              }
+              window.location='/';
+          });
+      }*/
     </script>
               
     <script src="jstree/jstree.min.js"></script>
@@ -158,11 +180,8 @@
           });
 
           $('#lifespan').text(lifeExpPreview + ' years');
-
-
           var newYearPreview = new Date();
           newYearPreview = new Date(newYearPreview.getFullYear() + lifeExpPreview - currentAge, 1 - 1, 1);
-
           $('.sub_header2').countdown('option', {until: newYearPreview});
 
           console.log(data.selected);
@@ -184,6 +203,8 @@
       var lifeExp = {{expLifeSpan}};
       var lifeExpPreview = lifeExp;
       var currentAge = {{curAge}};
+      
+      /*
       $(function() {
         var items = [{text: 'I ran', value: '3'},
         {text: 'I slept enough', value: '2'},
@@ -221,7 +242,7 @@
 
           $('.sub_header2').countdown('option', {until: newYearPreview});
         }
-      });
+      });*/
     </script>
 
     <div class = "sub_header1">
