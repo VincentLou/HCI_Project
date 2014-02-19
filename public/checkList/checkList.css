@@ -13,10 +13,11 @@
 }
 
 .checkList .toolbar .txtFilter{
-	width: 99%;
-	margin-left: 3px;
-	margin-right: 3px;
+	width: 85%;
+	/*margin-left: 10%;*/
+	/*margin-right: 20%;*/
 	border:1px solid #ccc;
+	float: right;
 }
 
 .checkList .toolbar .filterBox{
@@ -25,8 +26,16 @@
 }
 
 .checkList .toolbar .chkAll{
-	margin-top: 7px;
+	margin-top: 0.5em;
+	margin-bottom: auto;
 	border-right: 1px solid #ccc;
+	/*position:relative;*/
+  /*  top:78px;
+    right:47px;*/
+    /*top:2.3em;
+    left:10%;*/
+    /*top:-1.0em;*/
+    float:left;
 }
 
 .checkList .table{

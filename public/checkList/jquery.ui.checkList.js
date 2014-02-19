@@ -17,20 +17,20 @@
 
 			// generate toolbar
 			var toolbar = $('<div/>').addClass('toolbar');
-			// var chkAll = $('<input/>').attr('type','checkbox').addClass('chkAll').click(function(){
-			// 	var state = $(this).attr('checked');
-			// 	var setState = false;
+			var chkAll = $('<input/>').attr('type','checkbox').addClass('chkAll').click(function(){
+				var state = $(this).attr('checked');
+				var setState = false;
 				
-			// 	setState = (state==undefined) ? false : true;
+				setState = (state==undefined) ? false : true;
 
-			// 	o.objTable.find('.chk:visible').attr('checked', setState);
+				o.objTable.find('.chk:visible').attr('checked', setState);
 
-			// 	self._selChange();
-			// });
-			var txtfilter = $('<input/>').attr('type','text').attr('placeholder', 'search').addClass('txtFilter').keyup(function(){
+				self._selChange();
+			});
+			var txtfilter = $('<input/>').attr('type','text').attr('placeholder', 'search').attr('autocorrect',"off").addClass('txtFilter').keyup(function(){
 				self._filter($(this).val());
 			});
-			// toolbar.append(chkAll);
+			toolbar.append(chkAll);
 			toolbar.append($('<div/>').addClass('filterbox').append(txtfilter));
 
 			var helper = $('<span class="clear-helper">&times;</span>');
