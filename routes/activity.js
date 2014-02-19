@@ -9,7 +9,6 @@ exports.view = function(req, res){
 
   console.log(db);
   console.log('clicked on activity');
-
 	
   
 
