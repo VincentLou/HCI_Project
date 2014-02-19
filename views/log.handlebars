@@ -2,42 +2,44 @@
 
 <html>
 <head>
-    <title>LifeUp Log</title>   
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="/css/home.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+  <title>LifeUp Log</title>   
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="/css/home.css" rel="stylesheet">
+  <link rel="stylesheet" href="jstree/themes/default/style.min.css" />
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    
-    <script src="checkList/jquery-1.8.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
-    <script type="text/javascript" src="js/jquery.plugin.js"></script> 
-    <script type="text/javascript" src="js/jquery.countdown.js"></script>
-    <!-- this is a comment in HTML -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-    <!-- checklist -->
-    <script src="checkList/jquery-ui-1.8.23.custom.min.js"></script>
-    <script src="checkList/jquery.ui.checkList.js"></script>
+  <script src="checkList/jquery-1.8.0.min.js"></script>
 
-    <script type="text/javascript" src="js/vars.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
+  <script type="text/javascript" src="js/jquery.plugin.js"></script> 
+  <script type="text/javascript" src="js/jquery.countdown.js"></script>
+  <!-- this is a comment in HTML -->
 
-    <link rel="stylesheet" type="text/css" href="checkList/ui-lightness/jquery-ui-1.8.23.custom.css" />
-    <link rel="stylesheet" type="text/css" href="checkList/checkList.css" />
-    <style type='text/css'>     
+  <!-- checklist -->
+  <script src="checkList/jquery-ui-1.8.23.custom.min.js"></script>
+  <script src="checkList/jquery.ui.checkList.js"></script>
+
+  <script type="text/javascript" src="js/vars.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="checkList/ui-lightness/jquery-ui-1.8.23.custom.css" />
+  <link rel="stylesheet" type="text/css" href="checkList/checkList.css" />
+  <style type='text/css'>     
         /*body {
             font-family: 'Segoe UI',Tahoma,Arial,Helvetica,sans-serif;
             vertical-align: top;
             font-size: .813em;
             line-height: 1.4em;
             color: #44525E;
-        }*/
+          }*/
 
-        #activityCheckList, #selected{
+          #activityCheckList, #selected{
             display: block;
             margin-bottom: 10px;
             margin-left:auto;
@@ -45,127 +47,76 @@
             width: 95%;
             height: 60%;
             font-size: 2.813em;
-        }
-    </style>
+          }
+        </style>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->        
+      <![endif]-->        
 </head>
 
 <body>
-    <div class="container">
-        <!-- h1 through h6 are headers. The higher the number, the smaller the header -->
-        <!-- p means paragraph -->
-        <h1 class = "header">LifeUP | Log</h1>
-        <!-- <div class = "sub_header1">
-            <img class = "image" src="images/uptrans.png" />
-            <div class = "time">83 years</div>
-        </div>
-        <div class = "sub_header2"> </div> -->
+  <div class="container">
+    <h1 class = "header">LifeUP | Log</h1>
 
-        <!-- <select id="e1">
-            <option value="ran">Ran</option>
-            <option value="veggies">Ate veggies</option>
-            <option value="slept">Slept enough</option>
-        </select> -->
-
-        <!-- checklist -->
-
-        <div id='activityCheckList'></div>
-
-        <!-- <br/>
-        <h3>Selection</h3>
-        <div id='selectedItems'></div>
-
-        <br/><br/>
-        <a href='#' id='populate'>Populate Beverages</a> -->
-
-        <script type="text/javascript">
-            var lifeExp = {{expLifeSpan}};
-            var lifeExpPreview = lifeExp;
-            var currentAge = {{curAge}};
-            $(function() {
-                var items = [{text: 'I ran', value: '3'},
-                             {text: 'I slept enough', value: '2'},
-                             {text: 'I ate veggies', value: '3'},
-                             {text: 'I made new friends', value: '1'},
-                             {text: 'I laughed', value: '1'},
-                             {text: 'I worked out', value: '1'},
-                             {text: 'I flossed', value: '1'},
-                             {text: 'I meditated', value: '2'},
-                             {text: 'I was thankful', value: '1'}
-                            ];
-
-                $('#activityCheckList').checkList({
-                    listItems: items,
-                    onChange: selChange
-                });
-
-                function selChange(){
-                    var selection = $('#activityCheckList').checkList('getSelection');
-
-                    var lifeIncrease = 0;
-
-                    for (i=0;i<selection.length;++i) 
-                    {
-                        lifeIncrease += Number(selection[i].value);
-                    }
-
-                    lifeExpPreview = lifeExp + lifeIncrease;
-
-                    $('#lifespan').text(lifeExpPreview + ' years');
-
-
-                    var newYearPreview = new Date();
-                    newYearPreview = new Date(newYearPreview.getFullYear() + lifeExpPreview - currentAge, 1 - 1, 1);
-                    // $('.sub_header2').countdown({until: newYearPreview, compact: true, 
-                    //     format: 'YOWDHMS', description: ''});
-                    $('.sub_header2').countdown('option', {until: newYearPreview});
-                }
-            });
-        </script>
-
-
-      <!--  <script>
-            (function ($, undefined) {
-                $.fn.clearable = function () {
-                    var $this = this;
-                    // $this.wrap('<div class="clear-holder" />');
-                    var helper = $('<span class="clear-helper">&times;</span>');
-                    $("#activityCheckList .filterbox").append(helper);
-                    $this.parent().on('keyup', function() {
-                        if($("input")[0].value) {
-                            helper.css('display', 'inline-block');
-                        } else helper.hide();
-                    });
-                    helper.click(function(){
-                        $("input")[0].value = "";
-                        $('#activityCheckList').checkList('showAll');
-
-                        helper.hide();
-                    });
-                };
-            })(jQuery);
-
-            $("#activityCheckList").clearable();
-        </script> -->
-
-        <div class = "sub_header1">
-            <img class = "image" src="images/uptrans.png" />
-            <div class = "time" id="lifespan">{{expLifeSpan}} years</div>
-        </div>
-        <div class = "sub_header2"> </div>
-
-        <div class="btn-group container">
-            <div class="btn btn-default btn-large smallbutton pull-left" onclick="window.location='/';">Cancel</div>
-            <div class="btn btn-primary btn-large smallbutton pull-right" onclick="LogFunction()">Log</div>
-        </div>
+    <div id="jstree">
+      <ul>
+        <li id="diet">Diet
+          <ul>
+            <li id="veggies">I ate veggies</li>
+            <li id="water">I drank water</li>
+            <li id="hungry">I ate when hungry</li>
+          </ul>
+        </li>
+        <li id="exercise">Exercise
+          <ul>
+            <li id="run">I ran</li>
+            <li id="gym">I worked out</li>
+            <li id="move">I moved around</li>
+          </ul>
+        </li>
+        <li id="social">Social
+          <ul>
+            <li id="laugh" value="1">I laughed</li>
+            <li id="talk">I talked to people</li>
+            <li id="friends">I made friends</li>
+          </ul>
+        </li>
+        <li id="lifestyle">Lifestyle
+          <ul>
+            <li id="sleep">I slept enough</li>
+            <li id="meditate">I meditated</li>
+            <li id="thankful">I was thankful</li>
+          </ul>
+        </li>
+        <li id="floss">Flossing</li>
+      </ul>
+    </div>
+    <!--button>demo button</button-->
 
     <script>
+      var lifeIncreases = {
+        diet: 0,
+        veggies: 3,
+        water: 1,
+        hungry: 3,
+        exercise: 0,
+        run: 2,
+        gym: 2,
+        move: 2,
+        social: 0,
+        laugh: 2,
+        talk: 1,
+        friends: 1,
+        lifestyle: 0,
+        sleep: 3,
+        meditate: 2,
+        thankful: 1,
+        floss: 1
+      };
 
         function LogFunction() {
             lifeExp = lifeExpPreview; // doesn't actually save yet becuase refresh.
@@ -185,31 +136,151 @@
                 }
                 window.location='/';
             });
-            
         }
     </script>
+              
+    <script src="jstree/jstree.min.js"></script>
 
     <script>
-        var currentAge = {{curAge}};
-        $('#lifespan').text(lifeExp + ' years');
-        if (displayStyle == 1)
-          $('.sub_header2').hide();
-        else if (displayStyle == 2)
-          $('.sub_header1').hide();
-        var newYear = new Date(); 
-        newYear = new Date(newYear.getFullYear() + lifeExp - currentAge, 1 - 1, 1);
-        $('.sub_header2').countdown({until: newYear, compact: true, 
-            format: 'YOWDHMS', description: ''});
-        $('.sub_header1').click(function() {
-            $('.sub_header1').hide();
-            $('.sub_header2').show();
-            displayStyle = 2;
+      $(function () {
+        // 6 create an instance when the DOM is ready
+        $('#jstree').jstree({"plugins" : ["checkbox"]});
+
+        $("#jstree").jstree("open_node", $(".jstree-node")[0]); // open first node for demonstration
+
+        // 7 bind to events triggered on the tree
+        $('#jstree').on("changed.jstree", function (e, data) {
+
+          lifeExpPreview = lifeExp;
+          $.each($("#jstree").jstree('get_selected'),function(index,value) { 
+            // console.log(value);
+             lifeExpPreview = lifeExpPreview + lifeIncreases[value];
+          });
+
+          $('#lifespan').text(lifeExpPreview + ' years');
+
+
+          var newYearPreview = new Date();
+          newYearPreview = new Date(newYearPreview.getFullYear() + lifeExpPreview - currentAge, 1 - 1, 1);
+
+          $('.sub_header2').countdown('option', {until: newYearPreview});
+
+          console.log(data.selected);
         });
-        $('.sub_header2').click(function() {
-            $('.sub_header2').hide();
-            $('.sub_header1').show();
-            displayStyle = 1;
+        // 8 interact with the tree - either way is OK
+        $('button').on('click', function () {
+          $('#jstree').jstree(true).select_node('child_node_1');
+          $('#jstree').jstree('select_node', 'child_node_1');
+          $.jstree.reference('#jstree').select_node('child_node_1');
         });
+      });
     </script>
+
+    <!-- checklist -->
+
+    <!--div id='activityCheckList'></div-->
+
+    <script type="text/javascript">
+      var lifeExp = {{expLifeSpan}};
+      var lifeExpPreview = lifeExp;
+      var currentAge = {{curAge}};
+      $(function() {
+        var items = [{text: 'I ran', value: '3'},
+        {text: 'I slept enough', value: '2'},
+        {text: 'I ate veggies', value: '3'},
+        {text: 'I made new friends', value: '1'},
+        {text: 'I laughed', value: '1'},
+        {text: 'I worked out', value: '1'},
+        {text: 'I flossed', value: '1'},
+        {text: 'I meditated', value: '2'},
+        {text: 'I was thankful', value: '1'}
+        ];
+
+        $('#activityCheckList').checkList({
+          listItems: items,
+          onChange: selChange
+        });
+
+        function selChange(){
+          var selection = $('#activityCheckList').checkList('getSelection');
+
+          var lifeIncrease = 0;
+
+          for (i=0;i<selection.length;++i) 
+          {
+            lifeIncrease += Number(selection[i].value);
+          }
+
+          lifeExpPreview = lifeExp + lifeIncrease;
+
+          $('#lifespan').text(lifeExpPreview + ' years');
+
+
+          var newYearPreview = new Date();
+          newYearPreview = new Date(newYearPreview.getFullYear() + lifeExpPreview - currentAge, 1 - 1, 1);
+
+          $('.sub_header2').countdown('option', {until: newYearPreview});
+        }
+      });
+    </script>
+
+    <div class = "sub_header1">
+      <img class = "image" src="images/uptrans.png" />
+      <div class = "time" id="lifespan">{{expLifeSpan}} years</div>
+    </div>
+    <div class = "sub_header2"> </div>
+
+    <div class="btn-group container">
+      <div class="btn btn-default btn-large smallbutton pull-left" onclick="window.location='/';">Cancel</div>
+      <div class="btn btn-primary btn-large smallbutton pull-right" onclick="LogFunction()">Log</div>
+    </div>
+
+    <script>
+
+      function LogFunction() {
+        lifeExp = lifeExpPreview;
+        // var selections = $('#activityCheckList').checkList('getSelection');
+        var selections = $("#jstree").jstree('get_selected');
+        var action_list = '';
+
+        if(selections.length==0){
+          return;
+        }
+        for (i=0;i<selections.length-1;++i) {
+          action_list = action_list + selections[i] + ",";
+        }
+        action_list = action_list + selections[selections.length-1];
+        $.post("log_activity", {"selections":action_list, "lifeExp": lifeExp}, function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+            console.log(body);
+          }
+          window.location='/';
+        });
+        
+      }
+  </script>
+
+  <script>
+    var currentAge = {{curAge}};
+    $('#lifespan').text(lifeExp + ' years');
+    if (displayStyle == 1)
+      $('.sub_header2').hide();
+    else if (displayStyle == 2)
+      $('.sub_header1').hide();
+    var newYear = new Date(); 
+    newYear = new Date(newYear.getFullYear() + lifeExp - currentAge, 1 - 1, 1);
+    $('.sub_header2').countdown({until: newYear, compact: true, 
+      format: 'YOWDHMS', description: ''});
+    $('.sub_header1').click(function() {
+      $('.sub_header1').hide();
+      $('.sub_header2').show();
+      displayStyle = 2;
+    });
+    $('.sub_header2').click(function() {
+      $('.sub_header2').hide();
+      $('.sub_header1').show();
+      displayStyle = 1;
+    });
+  </script>
 </body>
 </html>

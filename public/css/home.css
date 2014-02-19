@@ -15,7 +15,30 @@
 }
 
 .header{
-     text-align: center ;
+    text-align: center ;
+}
+
+.add_group{
+    text-align: center;
+}
+
+.footer{
+    margin-top: 0px;
+}
+
+.item_name{
+    height: 100%;
+    width: 100%;
+}
+
+.group_name{
+    height: 100%;
+    width: 100%;
+}
+
+.icons{
+    float:right;
+    margin-right: 10px;
 }
 
 .image{
@@ -100,6 +123,16 @@
      margin-right: auto ;
 }
 
+.add_group{
+     display: block;
+     font-size: 1.5em;
+     width: 49.5%;
+     margin-top: 20px;
+     margin-left: auto ;
+     margin-right: auto ;
+     margin-bottom: 20px ;
+}
+
 .smallbutton{
      display: block;
      font-size: 2em;
@@ -118,15 +151,16 @@
     float:left;  
 }
 .clear-helper{
-    /*margin-top:4px;
-    margin-right:4px;*/
+    /*margin-top:4px;*/
+    margin-right:0.2em;
     text-align:center;
     vertical-align:top;
-    position:absolute;
-  /*  top:78px;
-    right:47px;*/
-    top:1.5em;
-    right:1.5em;
+    /*position:absolute;
+    top:78px;
+    right:47px;
+    top:2.1em;
+    right:1.5em;*/
+    float:right;
     height:50px;
     width:50px;
     font-size:1em;
