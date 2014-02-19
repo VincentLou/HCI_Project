@@ -15,7 +15,25 @@
 }
 
 .header{
-     text-align: center ;
+    text-align: center ;
+}
+
+.add_group{
+    text-align: center;
+}
+
+.footer{
+    margin-top: 0px;
+}
+
+.group_name{
+    height: 100%;
+    width: 100%;
+}
+
+.icons{
+    float:right;
+    margin-right: 10px;
 }
 
 .image{
@@ -98,6 +116,16 @@
      margin-top: 20px;
      margin-left: auto ;
      margin-right: auto ;
+}
+
+.add_group{
+     display: block;
+     font-size: 1.5em;
+     width: 49.5%;
+     margin-top: 20px;
+     margin-left: auto ;
+     margin-right: auto ;
+     margin-bottom: 20px ;
 }
 
 .smallbutton{

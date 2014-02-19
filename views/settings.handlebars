@@ -1,0 +1,111 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>LifeUp</title>	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/home.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
+	<script type="text/javascript" src="js/jquery.plugin.js"></script> 
+	<script type="text/javascript" src="js/jquery.countdown.js"></script>
+
+    <script type="text/javascript" src="js/vars.js"></script>
+	<!-- this is a comment in HTML -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+	<div class="container">
+		<h1 class = "header">LifeUP | Settings</h1>
+		<div class="btn btn-info btn-large add_group" data-toggle="modal" data-target="#groupModal">Add a Group</div>
+
+		<div class="modal fade" id="groupModal">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        				<h4 class="modal-title">Group name:</h4>
+      				</div>
+      				<textarea class="group_name"></textarea>
+      				<div class="modal-footer footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="add_group();">Add Group</button>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+
+  		{{#each groups}}
+  		<div class="panel panel-info" id="{{id}}">
+			<div class="panel-heading">
+    			<h4 class="panel-title">
+    				{{name}}
+    				<span class="glyphicon glyphicon-minus icons" onclick="remove_item('{{id}}');"></span>
+    				<span class="glyphicon glyphicon-plus icons" data-toggle="modal" data-target="#modal{{id}}"></span>
+    			</h4>
+  			</div>
+
+  			<div class="panel-body">
+    			<ul class="list-group">
+    				{{#each items}}
+  					<li class="list-group-item" id="{{id}}">
+    					{{name}}
+    					<span class="glyphicon glyphicon-minus icons" onclick="remove_item('{{id}}');"></span>
+  					</li>
+  					{{/each}}
+				</ul>
+  			</div>
+  		</div>
+  		<div class="modal fade" id="modal{{id}}">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        				<h4 class="modal-title">Item name:</h4>
+      				</div>
+      				<textarea class="group_name"></textarea>
+      				<div class="modal-footer footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="add_group();">Add</button>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+  		{{/each}}
+	</div>
+
+	<div class="btn btn-info btn-large button" onclick="window.location='/';">Back</div>
+
+	<script>
+		function remove_group(id){
+			$('#'+id).remove();
+		}
+
+		function remove_item(id){
+			$('#'+id).remove();
+		}
+
+		function add_item(id){
+			alert(id);
+		}
+
+		function add_group(){
+			alert("add_group");
+		}
+	</script>
+</body>
+</html>
+
+

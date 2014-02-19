@@ -13,7 +13,7 @@ var index = require('./routes/index');
 var log = require('./routes/log');
 var activity = require('./routes/activity');
 var log_activity = require('./routes/log_activity');
-console.log(log_activity.add);
+var settings = require('./routes/settings');
 // var lifeExp = 83;
 
 var app = express();
@@ -44,7 +44,7 @@ app.get('/', index.view);
 app.get('/log', log.view);
 app.post('/log_activity', log_activity.add);
 app.get('/activity', activity.view);
-
+app.get('/settings', settings.view);
 // Example route
 // app.get('/users', user.list);
 
