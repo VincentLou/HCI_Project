@@ -47,43 +47,45 @@
   			</div>
 		</div>
 
-  		{{#each groups}}
-  		<div class="panel panel-info" id="{{id}}">
-			<div class="panel-heading">
-    			<h4 class="panel-title">
-    				{{name}}
-    				<span class="glyphicon glyphicon-minus icons" onclick="remove_item('{{id}}');"></span>
-    				<span class="glyphicon glyphicon-plus icons" data-toggle="modal" data-target="#modal{{id}}"></span>
-    			</h4>
-  			</div>
+		<div class='groups'>
+	  		{{#each groups}}
+	  		<div class="panel panel-info" id="{{id}}">
+				<div class="panel-heading">
+	    			<h4 class="panel-title">
+	    				{{name}}
+	    				<span class="glyphicon glyphicon-minus icons" onclick="remove_item('{{id}}');"></span>
+	    				<span class="glyphicon glyphicon-plus icons" data-toggle="modal" data-target="#modal{{id}}"></span>
+	    			</h4>
+	  			</div>
 
-  			<div class="panel-body">
-    			<ul class="list-group">
-    				{{#each items}}
-  					<li class="list-group-item" id="{{id}}">
-    					{{name}}
-    					<span class="glyphicon glyphicon-minus icons" onclick="remove_item('{{id}}');"></span>
-  					</li>
-  					{{/each}}
-				</ul>
-  			</div>
+	  			<div class="panel-body">
+	    			<ul class="list-group">
+	    				{{#each items}}
+	  					<li class="list-group-item" id="{{id}}">
+	    					{{name}}
+	    					<span class="glyphicon glyphicon-minus icons" onclick="remove_item('{{id}}');"></span>
+	  					</li>
+	  					{{/each}}
+					</ul>
+	  			</div>
+	  		</div>
+	  		<div class="modal fade" id="modal{{id}}">
+	  			<div class="modal-dialog">
+	    			<div class="modal-content">
+	      				<div class="modal-header">
+	        				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        				<h4 class="modal-title">Item name:</h4>
+	      				</div>
+	      				<textarea class="item_name"></textarea>
+	      				<div class="modal-footer footer">
+	        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="add_item('{{id}}');">Add</button>
+	      				</div>
+	    			</div>
+	  			</div>
+			</div>
+	  		{{/each}}
   		</div>
-  		<div class="modal fade" id="modal{{id}}">
-  			<div class="modal-dialog">
-    			<div class="modal-content">
-      				<div class="modal-header">
-        				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        				<h4 class="modal-title">Item name:</h4>
-      				</div>
-      				<textarea class="group_name"></textarea>
-      				<div class="modal-footer footer">
-        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="add_group();">Add</button>
-      				</div>
-    			</div>
-  			</div>
-		</div>
-  		{{/each}}
 	</div>
 
 	<div class="btn btn-info btn-large button" onclick="window.location='/';">Back</div>
@@ -98,11 +100,33 @@
 		}
 
 		function add_item(id){
-			alert(id);
+			var item_name = $('#modal'+id+' .item_name').val();
+			var item_id = item_name.replace(' ', '_');
+			var itemHTML = '<li class="list-group-item" id="'+item_id+'">' + item_name +
+				'<span class="glyphicon glyphicon-minus icons" onclick="remove_item(\''+item_id+'\');"></span>';
+			$('#'+id+' .list-group').prepend(itemHTML);
 		}
 
 		function add_group(){
-			alert("add_group");
+			var group_name = $('#groupModal .group_name').val();
+			var group_id = group_name.replace(' ', '_');
+			var groupHTML = 
+				'<div class="panel panel-info" id="'+group_id+'"><div class="panel-heading"><h4 class="panel-title">'
+				+group_name+
+				'<span class="glyphicon glyphicon-minus icons" onclick="remove_item(\''
+				+group_id+
+				'\');"></span><span class="glyphicon glyphicon-plus icons" data-toggle="modal" data-target="#modal'
+				+group_id+
+				'"></span></h4></div><div class="panel-body"><ul class="list-group"></ul></div></div><div class="modal fade" id="modal'
+				+group_id+
+				'"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">'
+				+'<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'
+				+'<h4 class="modal-title">Item name:</h4></div><textarea class="item_name"></textarea>'
+				+'<div class="modal-footer footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'
+				+'<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="add_item(\''
+				+group_id+
+				'\');">Add</button></div></div></div></div>';
+			$('.groups').prepend(groupHTML);
 		}
 	</script>
 </body>

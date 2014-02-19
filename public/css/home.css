@@ -26,6 +26,11 @@
     margin-top: 0px;
 }
 
+.item_name{
+    height: 100%;
+    width: 100%;
+}
+
 .group_name{
     height: 100%;
     width: 100%;
