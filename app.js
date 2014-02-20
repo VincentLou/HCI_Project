@@ -16,6 +16,16 @@ var log_activity = require('./routes/log_activity');
 var settings = require('./routes/settings');
 // var lifeExp = 83;
 
+
+var mongoose = require('mongoose');
+var models   = require('./models');
+// Connect to the Mongo database, whether locally or on Heroku
+// MAKE SURE TO CHANGE THE NAME FROM 'lab7' TO ... IN OTHER PROJECTS
+var local_database_name = 'HCI';
+var local_database_uri  = 'mongodb://localhost/' + local_database_name
+var database_uri = process.env.MONGOLAB_URI || local_database_uri
+mongoose.connect(database_uri);
+
 var app = express();
 
 // all environments
@@ -23,6 +33,7 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', handlebars());
 app.set('view engine', 'handlebars');
+
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -43,6 +54,10 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/log', log.view);
 app.post('/log_activity', log_activity.add);
+app.post('/settings/newGroup', settings.addGroup);
+app.post('/settings/newItem', settings.addItem);
+app.post('/settings/removeGroup', settings.removeGroup);
+app.post('/settings/removeItem', settings.removeItem);
 app.get('/activity', activity.view);
 app.get('/settings', settings.view);
 // Example route

@@ -1,0 +1,20 @@
+[
+	{
+		"name": "I ate veggies",
+		"id": "I_ate_veggies",
+		"user_id": 1,
+		"group_name": "Diet"
+	},
+	{
+		"name": "I drank water",
+		"id": "I_drank_water",
+		"user_id": 1,
+		"group_name": "Diet"
+	},
+	{
+		"name": "I ate when hungry",
+		"id": "I_ate_when_hungry",
+		"user_id": 1,
+		"group_name": "Diet"
+	}
+]
