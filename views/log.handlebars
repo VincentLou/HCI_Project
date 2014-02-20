@@ -137,7 +137,6 @@
             "{{id}}": {{value}},
           {{/each}}
         {{/each}}
-        "lastItem": 0
       };
 
       /*function LogFunction() {
@@ -170,14 +169,34 @@
 
         $("#jstree").jstree("open_node", $(".jstree-node")[0]); // open first node for demonstration
 
+        // pre-select nodes that had already been selected today
+        {{#each groups}}
+        {{#each items}}
+        if ({{done_today}}) {
+          $("#jstree").jstree("select_node","{{id}}");
+        }
+        {{/each}}
+        {{/each}}
+
+
         // 7 bind to events triggered on the tree
         $('#jstree').on("changed.jstree", function (e, data) {
 
           lifeExpPreview = lifeExp;
-          $.each($("#jstree").jstree('get_selected'),function(index,value) { 
-            // console.log(value);
-             lifeExpPreview = lifeExpPreview + lifeIncreases[value];
-          });
+          // $.each($("#jstree").jstree('get_selected'),function(index,value) { 
+          //   // console.log(value);
+          //    lifeExpPreview = lifeExpPreview + lifeIncreases[value];
+          // });
+          {{#each groups}}
+          {{#each items}}
+          if (!{{done_today}} && $("#jstree").jstree('is_selected', "{{id}}")) {  // increase if new activity
+            lifeExpPreview = lifeExpPreview + {{value}};
+          }
+          else if ({{done_today}} && !$("#jstree").jstree('is_selected', "{{id}}")) {  // decrease if uncheck
+            lifeExpPreview = lifeExpPreview - {{value}};
+          }
+          {{/each}}
+          {{/each}}
 
           $('#lifespan').text(lifeExpPreview + ' years');
           var newYearPreview = new Date();
