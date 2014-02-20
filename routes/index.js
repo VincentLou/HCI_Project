@@ -4,11 +4,10 @@
 */
 
 exports.view = function(req, res){
-  var mongojs = require('mongojs');
-  var db = mongojs('test');
-  var users = db.collection('users');
+  var models = require('../models');
+
   console.log("click on index");
-  users.find({}, function(err, doc) {
+  models.User.find({'id':1}, function(err, doc) {
     if(doc!=null && doc.length > 0){
       var expLifeSpan = doc[0].ExpLifeSpan;
       var curAge = doc[0].age;
