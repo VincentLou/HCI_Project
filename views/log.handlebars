@@ -264,6 +264,8 @@
       });*/
     </script>
 
+    <h1 id="lifeIncrease_label" style="display:none; text-align: center ; background-color:#bce8f1;"></h1>
+
     <div class = "sub_header1">
       <img class = "image" src="images/uptrans.png" />
       <div class = "time" id="lifespan">{{expLifeSpan}} years</div>
@@ -275,9 +277,13 @@
       <div class="btn btn-primary btn-large smallbutton pull-right" onclick="LogFunction()">Log</div>
     </div>
 
+    <div id="continue_button" class="btn btn-primary btn-large button" onclick="window.location='/';" style="display:none;">Continue</div>
+
+
     <script>
 
       function LogFunction() {
+        var lifeIncrease = lifeExpPreview - lifeExp;
         lifeExp = lifeExpPreview;
         // var selections = $('#activityCheckList').checkList('getSelection');
         var selections = $("#jstree").jstree('get_selected');
@@ -294,7 +300,17 @@
           if (!error && response.statusCode == 200) {
             console.log(body);
           }
-          window.location='/';
+
+          if (lifeIncrease == 0) {
+            window.location='/';
+          }
+          else {
+            $("#jstree").hide();
+            $(".btn-group").hide();
+            $(".header").text("Life Increased!");
+            $("#continue_button").show();
+            $("#lifeIncrease_label").show().text('+' + lifeIncrease + ' years!');
+          }
         });
         
       }
