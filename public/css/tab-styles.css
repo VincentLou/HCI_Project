@@ -1,9 +1,9 @@
 /* tab pane styling */
 .panes div {
-    padding:15px 10px;
+    padding:20px 20px;
     border:1px solid #999;
-    border-top:0;
-    height:425px;
+    border-top:50px;
+    height:450px;
     width: :400px;
     font-size:14px;
     background-color:#fff;
@@ -20,17 +20,22 @@ ul.tabs {
 
 /* single tab */
 ul.tabs li {
+
     float:left;
     text-indent:0;
-    padding:0;
-    margin:0 !important;
+    padding:10;
+    margin:20 !important;
     list-style-image:none !important;
+}
+
+ul.tabs h4 {
+	border: 1px solid #6e6e6e;
 }
 
 /* link inside the tab. uses a background image */
 ul.tabs a {
-    background: url(/media/img/tabs/blue.png) no-repeat -420px 0;
     font-size:11px;
+    padding: 50px;
     display:block;
     height: 30px;
     line-height:30px;
@@ -41,7 +46,7 @@ ul.tabs a {
     padding:0px;
     margin:0px;
     position:relative;
-    top:1px;
+    top:-8px;
 }
 
 ul.tabs a:active {
@@ -51,14 +56,18 @@ ul.tabs a:active {
 /* when mouse enters the tab move the background image */
 ul.tabs a:hover {
     background-position: -420px -31px;
-    color:#fff;
+    color:#6e6e6e;
 }
 
 /* active tab uses a class name "current". its highlight is also done by moving the background image. */
 ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
-    background-position: -420px -62px;
+    background-position: -400px -50px;
     cursor:default !important;
-    color:#000 !important;
+    color:#6e6e6e !important;
+}
+
+ul.tabs a.notCurrent {
+	color:#000;
 }
 
 /* Different widths for tabs: use a class name: w1, w2, w3 or w2 */
