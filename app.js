@@ -53,7 +53,7 @@ if ('development' == app.get('env')) {
 //app.get('/', login.view); remove login for now
 app.get('/', index.view);
 app.get('/log', log.view);
-app.get('/log/update', log.update);
+app.post('/log/update', log.update);
 app.post('/log_activity', log_activity.add);
 app.post('/settings/newGroup', settings.addGroup);
 app.post('/settings/newItem', settings.addItem);

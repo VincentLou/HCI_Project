@@ -2,9 +2,9 @@
 /*
  * GET log page.
  */
-var groups = require('../groups.json');
+ var groups = require('../groups.json');
 
-exports.view = function(req, res){
+ exports.view = function(req, res){
   console.log('clicked on log');
   var mongojs = require('mongojs');
   var db = mongojs('test');
@@ -14,7 +14,7 @@ exports.view = function(req, res){
   	console.log(err);
     if(doc!=null && doc.length > 0){
       console.log("db works");
-   	  var expLifeSpan = doc[0].ExpLifeSpan;
+      var expLifeSpan = doc[0].ExpLifeSpan;
       var curAge = doc[0].age;
       data = groups;
       data['curAge'] = curAge;
@@ -27,7 +27,7 @@ exports.view = function(req, res){
       });
     } else {
       console.log("insert again");
-	    users.insert({id:1, name:"test user", ExpLifeSpan:70, age:23});
+      users.insert({id:1, name:"test user", ExpLifeSpan:70, age:23});
       data = groups;
       data['expLifeSpan'] = 70;
       data['curAge'] = 23;
@@ -38,12 +38,18 @@ exports.view = function(req, res){
 
 exports.update = function(req, res) {
   var lifespan = req.body.value;
-  console.log('life span'+id);
+  console.log('life span'+lifespan);
   var models = require('../models');
-  models.User.update({'id':1}, {'lifespan':lifespan}).exec(afterQuery);
-  function afterQuery(err, projects) {
-    if(err) console.log(err);
-    console.log("success");
-    res.send(500);
-  }
+  models.Lifespans.find({}).sort({date: -1}).exec(function(err,docs){
+    var lastID = docs[0]._id;
+    data['expLifeSpan'] = docs[0].lifespan;
+    console.log(lastID);
+    models.Lifespans.update({'_id':lastID}, {'lifespan':lifespan}).exec(afterQuery);
+    function afterQuery(err, lifespans) {
+      if(err) console.log(err);
+      console.log("success");
+      res.send(500);
+    }
+  });
+
 }
