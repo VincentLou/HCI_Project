@@ -30,3 +30,10 @@ var ActionSchema = new Mongoose.Schema({
 		"date": Date
 });
 exports.Action = Mongoose.model('Action', ActionSchema);
+
+var PastLifeSpanSchema = new Mongoose.Schema({
+		"id": String,
+		"lifespan": Number,
+		"date": Date
+});
+exports.Lifespans = Mongoose.model('Lifespans', PastLifeSpanSchema);
