@@ -40,3 +40,15 @@ exports.view = function(req, res){
     }
   });
 };
+
+exports.update = function(req, res) {
+  var lifespan = req.body.value;
+  console.log('life span'+id);
+  var models = require('../models');
+  models.User.update({'id':1}, {'lifespan':lifespan}).exec(afterQuery);
+  function afterQuery(err, projects) {
+    if(err) console.log(err);
+    console.log("success");
+    res.send(500);
+  }
+}
