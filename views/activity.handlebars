@@ -2,12 +2,13 @@
 
 <html>
 <head>
-    <title>LifeUp Log</title>   
+    <title>LifeUp Activity</title>   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/css/home.css" rel="stylesheet">
+    <link href="/css/tab-styles.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 
@@ -16,35 +17,9 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
     <script type="text/javascript" src="js/jquery.plugin.js"></script> 
-    <script type="text/javascript" src="js/jquery.countdown.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <!-- this is a comment in HTML -->
 
-    <!-- checklist -->
-    <script src="checkList/jquery-1.8.0.min.js"></script>
-    <script src="checkList/jquery-ui-1.8.23.custom.min.js"></script>
-    <script src="checkList/jquery.ui.checkList.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="checkList/ui-lightness/jquery-ui-1.8.23.custom.css" />
-    <link rel="stylesheet" type="text/css" href="checkList/checkList.css" />
-    <style type='text/css'>     
-        /*body {
-            font-family: 'Segoe UI',Tahoma,Arial,Helvetica,sans-serif;
-            vertical-align: top;
-            font-size: .813em;
-            line-height: 1.4em;
-            color: #44525E;
-        }*/
-
-        #activityCheckList, #selected{
-            display: block;
-            margin-bottom: 10px;
-            margin-left:auto;
-            margin-right:auto;
-            width: 95%;
-            height: 60%;
-            font-size: 2.813em;
-        }
-    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -70,12 +45,61 @@
             <option value="veggies">Ate veggies</option>
             <option value="slept">Slept enough</option>
         </select> -->
-        <h3 class="header">This Month</h3>
-        <canvas class="myChart" id="myChart" width="400" height="400" align="center"></canvas>
+        <!-- the tabs -->
+        
+        <ul class="tabs">
+            <li><a href="#1" class="current" onclick="UpdateTabs(1)" id="tab1"><h4>This Week</h4></a></li>
+            <li><a href="#2" class="notCurrent" onclick="UpdateTabs(2)" id="tab2"><h4>This Month</h4></a></li>
+            <li><a href="#3" class="notCurrent" onclick="UpdateTabs(3)" id="tab3"><h4>This Year</h4></a></li>
+        </ul>
+         
+        <!-- tab "panes" -->
+        <div class="panes">
+            <div class="current" id="pane1">
+            <canvas class="myChart" id="myChart" width="400" height="400" align="center"></canvas>
+            </div>
+            <div class="notCurrent" id="pane2">Second tab content</div>
+            <div class="notCurrent" id="pane3">Third tab content</div>
+        </div>
+        <script type="text/javascript">
+            $("ul.tabs").tabs($("div.panes > div"));
+        </script>
+
         <h3 class="header">Positive Habit Percentage Logged</h3>
-        <canvas class="myChart" id="myChart2" width="400" height="400" align="center"></canvas>        
+        <canvas class="myChart" id="myChart2" width="375" height="375" align="center"></canvas>        
 
         <div class="btn btn-primary btn-large button" onclick="window.location='/';">Done</div>
+
+    <script type="text/javascript">
+        function UpdateTabs(code){
+            if (code == 1) {
+                document.getElementById("pane1").className = "current";
+                document.getElementById("tab1").className="current";
+                document.getElementById("pane2").className = "notCurrent";
+                document.getElementById("tab2").className="notCurrent";
+                document.getElementById("pane3").className = "notCurrent";
+                document.getElementById("tab3").className="notCurrent";
+            }
+            if (code == 2) {
+                document.getElementById("pane1").className = "notCurrent";
+                document.getElementById("tab1").className="notCurrent";
+                document.getElementById("pane2").className = "current";
+                document.getElementById("tab2").className="current";
+                document.getElementById("pane3").className = "notCurrent";
+                document.getElementById("tab3").className="notCurrent";
+            }
+            if (code == 3) {
+                document.getElementById("pane1").className = "notCurrent";
+                document.getElementById("tab1").className="notCurrent";
+                document.getElementById("pane2").className = "notCurrent";
+                document.getElementById("tab2").className="notCurrent";
+                document.getElementById("pane3").className = "current";
+                document.getElementById("tab3").className="current";
+            }
+
+        }
+
+    </script>
 
     <script type="text/javascript">
         //Get the context of the canvas element we want to select
@@ -132,20 +156,6 @@
 }
         var myNewChart2 = new Chart(ctx).Radar(data2);
     </script>
-    <script>
-    //     $('.sub_header2').hide();
-    //     var newYear = new Date(); 
-    //     newYear = new Date(newYear.getFullYear() + 48, 1 - 1, 1);
-    //     $('.sub_header2').countdown({until: newYear, compact: true, 
-    //         format: 'YOWDHMS', description: ''});
-    //     $('.sub_header1').click(function() {
-    //         $('.sub_header1').hide();
-    //         $('.sub_header2').show();
-    //     });
-    //     $('.sub_header2').click(function() {
-    //         $('.sub_header2').hide();
-    //         $('.sub_header1').show();
-    //     });
-    </script>
+
 </body>
 </html>
