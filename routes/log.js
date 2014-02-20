@@ -6,10 +6,9 @@
 
  exports.view = function(req, res){
   console.log('clicked on log');
-  var mongojs = require('mongojs');
-  var db = mongojs('test');
-  var users = db.collection('users');
-  users.find({}, function(err, doc) {
+  var models = require('../models');
+  console.log("click on index");
+  models.User.find({'id':1}, function(err, doc) {
 
   	console.log(err);
     if(doc!=null && doc.length > 0){
