@@ -39,14 +39,14 @@ ul.tabs a {
     display:block;
     height: 30px;
     line-height:30px;
-    width: 134px;
+    width: 75px;
     text-align:center;
     text-decoration:none;
     color:#333;
     padding:0px;
     margin:0px;
     position:relative;
-    top:-8px;
+    top:-20px;
 }
 
 ul.tabs a:active {
@@ -55,7 +55,7 @@ ul.tabs a:active {
 
 /* when mouse enters the tab move the background image */
 ul.tabs a:hover {
-    background-position: -420px -31px;
+    background-position: -420px -25px;
     color:#6e6e6e;
 }
 

@@ -1,10 +1,16 @@
-
+var models = require('../models');
+    
 /*
  * GET log page.
  */
 
 exports.view = function(req, res){
+	models.Lifespans
+	.find()
+	.sort({date: 1})
+	.exec(renderGraphs);
 
-  res.render('activity');
-
+	function renderGraphs(err, lifespans) {
+	  	res.render('activity', {"rawLifespans": lifespans});
+	}
 };
