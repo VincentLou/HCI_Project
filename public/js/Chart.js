@@ -641,6 +641,8 @@ window.Chart = function(context){
 				
 				ctx.textBaseline = "middle";
 				
+				//Modify here to insert links
+				data.labels[k] = data.labels[k];
 				ctx.fillText(data.labels[k],opposite,-adjacent);
 				
 			}
