@@ -36,8 +36,43 @@ mongoose.connect(database_uri);
 var action_types_json = require('./action_types.json');
 var users_json = require('./users.json');
 var groups_json = require('./group.json');
-
+var pastLifespans_json = require('./pastLifespans.json');
+var total = 5;
 var done = 0;
+
+console.log(pastLifespans_json);
+models.Lifespans
+  .find()
+  .remove()
+  .exec(onceClearLifespans); // callback to continue at
+
+// Step 3: load the data from the JSON file
+function onceClearLifespans(err) {
+  if(err) console.log(err);
+
+  // loop over the projects, construct and save an object from each one
+  // Note that we don't care what order these saves are happening in...
+  var to_save_count = pastLifespans_json.length;
+  for(var i=0; i<pastLifespans_json.length; i++) {
+    var json = pastLifespans_json[i];
+    var lifespan = new models.Lifespans(json);
+    // console.log("lifesanp:"+lifespan);
+    lifespan.save(function(err, action_type) {
+      if(err) console.log(err);
+
+      to_save_count--;
+      console.log('lifespan: '+ to_save_count + ' left to save');
+      if(to_save_count <= 0) {
+        console.log('lifspan DONE');
+        done = done+1;
+        if(done==total){
+          mongoose.connection.close()
+        }
+      }
+    });
+  }
+}
+
 // Step 2: Remove all existing documents
 models.ActionType
   .find()
@@ -63,7 +98,7 @@ function onceClearActionType(err) {
       if(to_save_count <= 0) {
         console.log('action type DONE');
         done = done+1;
-        if(done==4){
+        if(done==total){
           mongoose.connection.close()
         }
         // The script won't terminate until the 
@@ -99,7 +134,7 @@ function onceClearUser(err) {
       if(to_save_count <= 0) {
         console.log('user DONE');
         done = done+1;
-        if(done==4){
+        if(done==total){
           mongoose.connection.close()
         }
         // The script won't terminate until the 
@@ -134,7 +169,7 @@ function onceClearGroup(err) {
       if(to_save_count <= 0) {
         console.log('group DONE');
         done = done+1;
-        if(done==4){
+        if(done==total){
           mongoose.connection.close()
         }
         // The script won't terminate until the 
@@ -156,7 +191,7 @@ function onceClearAction(err) {
   if(err) console.log(err);
   console.log('action DONE');
   done = done+1;
-  if(done==4){
+  if(done==total){
     mongoose.connection.close()
   }
 }
