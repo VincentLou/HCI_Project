@@ -10,10 +10,7 @@ exports.view = function(req, res){
 		var count = group.length;
 		for(var i=0; i<count; i++) {
 			var json = group[i];
-
-
 			output.push({'name':json.name, 'id':json.id, 'items':[]});
-
 			models.ActionType.find({"group_name":json.name}).exec(afterQueryAction);
 			function afterQueryAction(err, items) {
 				if(err) console.log(err);
@@ -34,7 +31,6 @@ exports.view = function(req, res){
 				if(groupCount==count){
 					var finalOutput = {'groups': output};
 					res.render('settings',finalOutput);
-
 				}
 			}
 		}

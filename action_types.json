@@ -16,5 +16,59 @@
 		"id": "I_ate_when_hungry",
 		"user_id": 1,
 		"group_name": "Diet"
+	},
+	{
+		"name": "I ran",
+		"id": "I_ran",
+		"user_id": 1,
+		"group_name": "Exercise"
+	},
+	{
+		"name": "I worked out",
+		"id": "I_worked_out",
+		"user_id": 1,
+		"group_name": "Exercise"
+	},
+	{
+		"name": "I moved around",
+		"id": "I_moved_around",
+		"user_id": 1,
+		"group_name": "Exercise"
+	},
+	{
+		"name": "I laughed",
+		"id": "I_laughed",
+		"user_id": 1,
+		"group_name": "Social"
+	},
+	{
+		"name": "I talked to people",
+		"id": "I_talked_to_people",
+		"user_id": 1,
+		"group_name": "Social"
+	},
+	{
+		"name": "I was generous",
+		"id": "I_was_generous",
+		"user_id": 1,
+		"group_name": "Social"
+	},
+	{
+		"name": "I slept enough",
+		"id": "I_slept_enough",
+		"user_id": 1,
+		"group_name": "Lifestyle"
+	},
+	{
+		"name": "I flossed",
+		"id": "I_flossed",
+		"user_id": 1,
+		"group_name": "Lifestyle"
+	},
+	{
+		"name": "I meditated",
+		"id": "I_meditated",
+		"user_id": 1,
+		"group_name": "Lifestyle"
 	}
 ]
