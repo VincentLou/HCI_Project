@@ -56,13 +56,13 @@
         <!-- tab "panes" -->
         <div class="panes">
             <div class="current" id="pane1">
-            <canvas class="myChart" id="weekChart" width="350" height="395" align="center"></canvas>
+            <canvas class="myChart" id="weekChart" width="330" height="360" align="center"></canvas>
             </div>
             <div class="notCurrent" id="pane2">
-                <canvas class="myChart" id="monthChart" width="350" height="395" align="center"></canvas>
+                <canvas class="myChart" id="monthChart" width="330" height="360" align="center"></canvas>
             </div>
             <div class="notCurrent" id="pane3">
-                <canvas class="myChart" id="yearChart" width="350" height="395" align="center"></canvas>
+                <canvas class="myChart" id="yearChart" width="330" height="360" align="center"></canvas>
             </div>
         </div>
         <script type="text/javascript">
@@ -230,7 +230,7 @@
     
     
 
-    var nLabeledMonths = Math.floor((allLoggedAges.length+12)/30)+1;
+    var nLabeledMonths = Math.floor((allLoggedAges.length+13)/30)+1;
     console.log(nLabeledMonths);
     
     var monthLabels = new Array();
@@ -286,12 +286,12 @@
             }
         ]
     }
-
     var options = {
         scaleOverride :true,
         scaleSteps :25,
         scaleStepWidth :5,
-        scaleStartValue:0
+        scaleStartValue:0,
+        animationSteps:20
     }
     var myWeekChart = new Chart(ctx).Line(data, options);
     var myMonthChart = new Chart(monthCtx).Line(monthData, options);
