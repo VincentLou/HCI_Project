@@ -3,9 +3,9 @@ var Mongoose = require('mongoose');
 
 var ActionTypeSchema = new Mongoose.Schema({
   		"name": String,
-		"id": String,
+		"id": Number,
 		"user_id": Number,
-		"group_name": String
+		"group_id": Number
 });
 exports.ActionType = Mongoose.model('ActionType', ActionTypeSchema);
 
@@ -19,7 +19,7 @@ exports.User = Mongoose.model('User', UserSchema);
 
 var GroupSchema = new Mongoose.Schema({
   		"name": String,
- 		"id": String,
+ 		"id": Number,
 		"user_id": Number
 });
 exports.Group = Mongoose.model('Group', GroupSchema);
