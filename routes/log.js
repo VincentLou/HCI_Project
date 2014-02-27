@@ -70,7 +70,7 @@ exports.update = function(req, res) {
     function afterQuery(err, lifespans) {
       if(err) console.log(err);
       console.log("success");
-      res.send(500);
+      res.send(0);
     }
   });
 

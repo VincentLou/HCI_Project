@@ -165,7 +165,18 @@
     <script>
       $(function () {
         // 6 create an instance when the DOM is ready
-        $('#jstree').jstree({"plugins" : ["checkbox"]});
+
+        $('#jstree').jstree({
+          "plugins" : ["checkbox"],
+          "core": {
+              "themes":{
+                  "icons":false
+              }
+          }
+        });
+        // $(".jstree-closed").each(function(i) { 
+        //   $('#jstree').jstree(true).set_icon(this, "glyphicon glyphicon-ok")
+        // });
 
         $("#jstree").jstree("open_node", $(".jstree-node")[0]); // open first node for demonstration
 
