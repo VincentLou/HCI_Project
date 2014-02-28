@@ -60,15 +60,23 @@
 
 <body>
   <div class="container">
-    <h1 class = "header">LifeUP | Log</h1>
+    <!-- <h1 class = "header">LifeUP | Log</h1> -->
+     <div style="text-align: center">
+          <div class="btn-group">
+            <div class="btn btn-default headerbtn" onclick="window.location='/';">LifeUp</div>
+            <div class="btn btn-default headerbtn" onclick="window.location='/log'">Log</div>
+            <div class="btn btn-default headerbtn" onclick="window.location='/activity'">Activity</div>
+            <div class="btn btn-default headerbtn" onclick="window.location='/settings'">Options</div>
+          </div>
+      </div>
 
     <div id="jstree">
       <ul>
         {{#each groups}}
-        <li id="{{id}}">{{name}}
+        <li id="group{{id}}">{{name}}
           <ul>
             {{#each items}}
-            <li id="{{id}}">{{name}}</li>
+            <li id="action{{id}}">{{name}}</li>
             {{/each}}
           </ul>
         </li>
@@ -165,7 +173,26 @@
     <script>
       $(function () {
         // 6 create an instance when the DOM is ready
-        $('#jstree').jstree({"plugins" : ["checkbox"]});
+
+        $('#jstree').jstree({
+          // "plugins" : ["checkbox"],
+          // "core": {
+          //     "themes":{
+          //         "icons":false
+          //     }
+          // }
+          "types" : {
+            "default" : {
+              "icon" : false
+            }
+            // "demo" : {
+            //   "icon" : "glyphicon glyphicon-ok"
+            // }
+          },
+          "plugins" : [ "checkbox","types" ]
+        });
+       
+        // $(".jstree-themeicon-hidden").removeClass("jstree-themeicon-hidden")
 
         $("#jstree").jstree("open_node", $(".jstree-node")[0]); // open first node for demonstration
 
@@ -173,7 +200,7 @@
         {{#each groups}}
         {{#each items}}
         if ({{done_today}}) {
-          $("#jstree").jstree("select_node","{{id}}");
+          $("#jstree").jstree("select_node","action{{id}}");
         }
         {{/each}}
         {{/each}}
@@ -189,10 +216,10 @@
           // });
           {{#each groups}}
           {{#each items}}
-          if (!{{done_today}} && $("#jstree").jstree('is_selected', "{{id}}")) {  // increase if new activity
+          if (!{{done_today}} && $("#jstree").jstree('is_selected', "action{{id}}")) {  // increase if new activity
             lifeExpPreview = lifeExpPreview + {{value}};
           }
-          else if ({{done_today}} && !$("#jstree").jstree('is_selected', "{{id}}")) {  // decrease if uncheck
+          else if ({{done_today}} && !$("#jstree").jstree('is_selected', "action{{id}}")) {  // decrease if uncheck
             lifeExpPreview = lifeExpPreview - {{value}};
           }
           {{/each}}
@@ -266,11 +293,17 @@
 
     <h1 id="lifeIncrease_label" style="display:none; text-align: center ; background-color:#bce8f1;"></h1>
 
-    <div class = "sub_header1">
+    <div class = "sub_header1"><a href="#"></a>
       <img class = "image" src="images/uptrans.png" />
-      <div class = "time" id="lifespan">{{expLifeSpan}} years</div>
+      <div>
+        <div class= "time_with_title">Life Expectancy:</div>
+        <div class = "time" id="lifespan">{{expLifeSpan}} years </div>
+      </div>
     </div>
-    <div class = "sub_header2"> </div>
+    <div class = "sub_header2">
+      <div class = "count_down_title">Life Remaining:</div>
+      <div class = "count_down"> </div>
+    </div>
 
     <div class="btn-group container">
       <div class="btn btn-default btn-large smallbutton pull-left" onclick="window.location='/';">Cancel</div>
@@ -326,7 +359,7 @@
       $('.sub_header1').hide();
     var newYear = new Date(); 
     newYear = new Date(newYear.getFullYear() + lifeExp - currentAge, 1 - 1, 1);
-    $('.sub_header2').countdown({until: newYear, compact: true, 
+    $('.count_down').countdown({until: newYear, compact: true, 
       format: 'YOWDHMS', description: ''});
     $('.sub_header1').click(function() {
       $('.sub_header1').hide();

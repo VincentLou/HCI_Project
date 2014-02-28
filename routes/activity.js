@@ -35,19 +35,33 @@ exports.view = function(req, res){
 
             function processActionType(err, items) {
                 if(err) console.log(err);
+                // console.log('processActionType');
                 var totalLogged = 0;
+                var numToProcess = 0;
+                var numProcessed = 0;
 
                 for(var j=0; j<items.length; j++) {
+
+                    numToProcess = numToProcess + 1;
                     models.Action.find({"id":items[j].id}).sort({date: 1}).exec(processLoggedActions);
 
                     function processLoggedActions(err, actions) {
+
                         if(err) console.log(err);
 
-                        totalLogged = totalLogged + 1;
+                        totalLogged = totalLogged + actions.length;
+
+                        // console.log('tot ' + totalLogged + 'processLoggedActions: ' + actions );
+
+                        numProcessed = numProcessed + 1;
                     }
 
                     // itemArr.push({"name": items[j].name, "id":items[j].id, "value": "1", "done_today":"0"});
                 }
+                // while(numProcessed != numToProcess) {}
+
+                setTimeout(function(){
+
                 if(items.length!=0){
                   for(var k=0; k<output.length; k++){
                     if(output[k].name == items[0].group_name) {
@@ -64,6 +78,7 @@ exports.view = function(req, res){
                   console.log(output);
                   res.render('activity',{"rawLifespans": rawLifespans, "groupData": output});
                 }
+            },100);
             }
         }
     }

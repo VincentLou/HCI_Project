@@ -28,7 +28,7 @@
         for(var i=0; i<count; i++) {
           var json = group[i];
           output.push({'name':json.name, 'id':json.id, "value": "0", 'items':[]});
-          models.ActionType.find({"group_name":json.name}).exec(afterQueryAction);
+          models.ActionType.find({"group_id":json.id}).exec(afterQueryAction);
           function afterQueryAction(err, items) {
             if(err) console.log(err);
             var itemArr = [];
@@ -37,7 +37,7 @@
             }
             if(items.length!=0){
               for(var k=0; k<output.length; k++){
-                if(output[k].name == items[0].group_name) {
+                if(output[k].id == items[0].group_id) {
                   output[k].items=itemArr;
                 }
               }
@@ -70,7 +70,7 @@ exports.update = function(req, res) {
     function afterQuery(err, lifespans) {
       if(err) console.log(err);
       console.log("success");
-      res.send(500);
+      res.send(0);
     }
   });
 
