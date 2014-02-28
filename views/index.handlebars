@@ -31,7 +31,17 @@
 	<div class="container">
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
-		<h1 class = "header">LifeUP</h1>
+		<!-- <h1 class = "header">LifeUP</h1> -->
+
+        <div style="text-align: center">
+            <div class="btn-group">
+              <div class="btn btn-default headerbtn" onclick="window.location='/';">LifeUp</div>
+              <div class="btn btn-default headerbtn" onclick="window.location='/log'">Log</div>
+              <div class="btn btn-default headerbtn" onclick="window.location='/activity'">Activity</div>
+              <div class="btn btn-default headerbtn" onclick="window.location='/settings'">Options</div>
+            </div>
+        </div>
+
 		<div class = "sub_header1"><a href="#"></a>
 			<img class = "image" src="images/uptrans.png" />
 			<div class = "time" id="lifespan">{{expLifeSpan}} years</div>

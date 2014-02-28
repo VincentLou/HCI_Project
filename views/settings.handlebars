@@ -33,7 +33,15 @@
 
   <body>
   	<div class="container">
-  		<h1 class = "header">LifeUP | Settings</h1>
+  		<!-- <h1 class = "header">LifeUP | Settings</h1> -->
+         <div style="text-align: center">
+            <div class="btn-group">
+              <div class="btn btn-default headerbtn" onclick="window.location='/';">LifeUp</div>
+              <div class="btn btn-default headerbtn" onclick="window.location='/log'">Log</div>
+              <div class="btn btn-default headerbtn" onclick="window.location='/activity'">Activity</div>
+              <div class="btn btn-default headerbtn" onclick="window.location='/settings'">Options</div>
+            </div>
+        </div>
   		<div class="btn btn-info btn-large add_group" data-toggle="modal" data-target="#groupModal">Add a Group</div>
 
   		<div class="modal fade" id="removeItem">

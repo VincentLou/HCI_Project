@@ -60,12 +60,20 @@
 
 <body>
   <div class="container">
-    <h1 class = "header">LifeUP | Log</h1>
+    <!-- <h1 class = "header">LifeUP | Log</h1> -->
+     <div style="text-align: center">
+          <div class="btn-group">
+            <div class="btn btn-default headerbtn" onclick="window.location='/';">LifeUp</div>
+            <div class="btn btn-default headerbtn" onclick="window.location='/log'">Log</div>
+            <div class="btn btn-default headerbtn" onclick="window.location='/activity'">Activity</div>
+            <div class="btn btn-default headerbtn" onclick="window.location='/settings'">Options</div>
+          </div>
+      </div>
 
     <div id="jstree">
       <ul>
         {{#each groups}}
-        <li id="{{id}}">{{name}}
+        <li id="{{id}}" class="folder">{{name}}
           <ul>
             {{#each items}}
             <li id="{{id}}">{{name}}</li>
@@ -167,16 +175,29 @@
         // 6 create an instance when the DOM is ready
 
         $('#jstree').jstree({
-          "plugins" : ["checkbox"],
-          "core": {
-              "themes":{
-                  "icons":false
-              }
-          }
+          // "plugins" : ["checkbox"],
+          // "core": {
+          //     "themes":{
+          //         "icons":false
+          //     }
+          // }
+          "types" : {
+            "default" : {
+              "icon" : false
+            }
+            // "demo" : {
+            //   "icon" : "glyphicon glyphicon-ok"
+            // }
+          },
+          "plugins" : [ "checkbox","types" ]
         });
         // $(".jstree-closed").each(function(i) { 
         //   $('#jstree').jstree(true).set_icon(this, "glyphicon glyphicon-ok")
         // });
+        // $(".folder").each(function(i) { 
+        //   $('#jstree').jstree(true).set_icon(this, "glyphicon glyphicon-folder-close")
+        // });
+        $(".folder .jstree-themeicon").removeClass("jstree-themeicon-hidden")
 
         $("#jstree").jstree("open_node", $(".jstree-node")[0]); // open first node for demonstration
 
