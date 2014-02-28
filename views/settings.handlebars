@@ -173,7 +173,7 @@
   		function add_item(id){
   			var item_name = $('#modal'+id+' .item_name').val();
   			var itemHTML = '<li class="list-group-item" id="'+next_item_id+'">' + item_name +
-  			'<span class="glyphicon glyphicon-minus icons" onclick="remove_item(\''+next_item_id+'\');"></span>';
+  			'<span class="glyphicon glyphicon-minus icons" data-toggle="modal" data-target="#removeItem" onclick="set_remove_item_id(\''+next_item_id+'\', \''+item_name+'\');"></span>';
   			$('#'+id+' .list-group').prepend(itemHTML);
   			var json = {
   				'name': item_name,
@@ -190,8 +190,7 @@
   			var groupHTML = 
   			'<div class="panel panel-info" id="'+next_group_id+'"><div class="panel-heading"><h4 class="panel-title">'
   			+group_name+
-  			'<span class="glyphicon glyphicon-minus icons" onclick="set_remove_group_id(\''+next_group_id+'\', \''+group_name+'\');"
-  				'\');"></span><span class="glyphicon glyphicon-plus icons" data-toggle="modal" data-target="#modal'
+  			'<span class="glyphicon glyphicon-minus icons" data-toggle="modal" data-target="#removeGroup" onclick="set_remove_group_id(\''+next_group_id+'\', \''+group_name+'\');"></span><span class="glyphicon glyphicon-plus icons" data-toggle="modal" data-target="#modal'
 +next_group_id+
 '"></span></h4></div><div class="panel-body"><ul class="list-group"></ul></div></div><div class="modal fade" id="modal'
 +next_group_id+
