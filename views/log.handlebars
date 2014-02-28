@@ -298,11 +298,17 @@
 
     <h1 id="lifeIncrease_label" style="display:none; text-align: center ; background-color:#bce8f1;"></h1>
 
-    <div class = "sub_header1">
+    <div class = "sub_header1"><a href="#"></a>
       <img class = "image" src="images/uptrans.png" />
-      <div class = "time" id="lifespan">{{expLifeSpan}} years</div>
+      <div>
+        <div class= "time_with_title">Life Expectancy:</div>
+        <div class = "time" id="lifespan">{{expLifeSpan}} years </div>
+      </div>
     </div>
-    <div class = "sub_header2"> </div>
+    <div class = "sub_header2">
+      <div class = "count_down_title">Life Remaining:</div>
+      <div class = "count_down"> </div>
+    </div>
 
     <div class="btn-group container">
       <div class="btn btn-default btn-large smallbutton pull-left" onclick="window.location='/';">Cancel</div>
@@ -358,7 +364,7 @@
       $('.sub_header1').hide();
     var newYear = new Date(); 
     newYear = new Date(newYear.getFullYear() + lifeExp - currentAge, 1 - 1, 1);
-    $('.sub_header2').countdown({until: newYear, compact: true, 
+    $('.count_down').countdown({until: newYear, compact: true, 
       format: 'YOWDHMS', description: ''});
     $('.sub_header1').click(function() {
       $('.sub_header1').hide();
