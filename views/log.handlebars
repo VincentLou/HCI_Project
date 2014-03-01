@@ -70,13 +70,16 @@
           </div>
         </div>
 
-    <div id="jstree">
-      <ul>
-        {{#each groups}}
-        <li id="group{{id}}">{{name}}
+        <div id="jstree">
           <ul>
-            {{#each items}}
-            <li id="action{{id}}">{{name}}</li>
+            {{#each groups}}
+            <li id="group{{id}}">{{name}}
+              <ul>
+                {{#each items}}
+                <li id="action{{id}}">{{name}}</li>
+                {{/each}}
+              </ul>
+            </li>
             {{/each}}
           </ul>
         </div>
@@ -188,7 +191,7 @@
           },
           "plugins" : [ "checkbox","types" ]
         });
-
+        
         // $(".jstree-themeicon-hidden").removeClass("jstree-themeicon-hidden")
 
         $("#jstree").jstree("open_node", $(".jstree-node")[0]); // open first node for demonstration
@@ -211,7 +214,6 @@
           //   // console.log(value);
           //    lifeExpPreview = lifeExpPreview + lifeIncreases[value];
           // });
-
         {{#each groups}}
         {{#each items}}
           if (!{{done_today}} && $("#jstree").jstree('is_selected', "action{{id}}")) {  // increase if new activity
