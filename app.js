@@ -52,15 +52,20 @@ if ('development' == app.get('env')) {
 // Add routes here
 //app.get('/', login.view); remove login for now
 app.get('/', index.view);
+app.get('/tagheading', index.viewTagHeading);
 app.get('/log', log.view);
+app.get('/log_tagheading', log.viewTagHeading);
+app.get('/activity', activity.view);
+// app.get('/activity/tagheading', activity.viewTagHeading);
+app.get('/settings', settings.view);
+// app.get('/settings/tagheading', settings.viewTagHeading);
+
 app.post('/log/update', log.update);
 app.post('/log_activity', log_activity.add);
 app.post('/settings/newGroup', settings.addGroup);
 app.post('/settings/newItem', settings.addItem);
 app.post('/settings/removeGroup', settings.removeGroup);
 app.post('/settings/removeItem', settings.removeItem);
-app.get('/activity', activity.view);
-app.get('/settings', settings.view);
 // Example route
 // app.get('/users', user.list);
 
