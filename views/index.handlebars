@@ -16,83 +16,103 @@
 	<script type="text/javascript" src="js/jquery.plugin.js"></script> 
 	<script type="text/javascript" src="js/jquery.countdown.js"></script>
 
-    <script type="text/javascript" src="js/vars.js"></script>
+	<script type="text/javascript" src="js/vars.js"></script>
 	<!-- this is a comment in HTML -->
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->        
-</head>
+      <![endif]-->      
+      <!-- Google Analytics Content Experiment code -->
+      <script>function utmx_section(){}function utmx(){}(function(){var
+      	k='82848137-1',d=document,l=d.location,c=d.cookie;
+      	if(l.search.indexOf('utm_expid='+k)>0)return;
+      	function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+      		indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+      			length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+      		'<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+      			'://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+      		'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+      		valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+      		'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+      	</script><script>utmx('url','A/B');</script>
+      	<!-- End of Google Analytics Content Experiment code -->
+      	
+      </head>
 
-<body>
-	<div class="container">
-		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
-		<!-- p means paragraph -->
-		{{#if tagHeading}}
-			<div style="text-align: center">
-	            <div class="btn-group">
-	              <div class="btn btn-default headerbtn" onclick="window.location='/tagheading';">LifeUp</div>
-	              <div class="btn btn-default headerbtn" onclick="window.location='/log_tagheading'">Log</div>
-	              <div class="btn btn-default headerbtn" onclick="window.location='/activity_tagheading'">Activity</div>
-	              <div class="btn btn-default headerbtn" onclick="window.location='/settings_tagheading'">Options</div>
-	            </div>
-	        </div>
-		{{else}}
-	        <h1 class = "header">LifeUP</h1>
-	    {{/if}}
+      <body>
+      	<div class="container">
+      		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
+      		<!-- p means paragraph -->
+      		{{#if tagHeading}}
+      		<div style="text-align: center">
+      			<div class="btn-group">
+      				<div class="btn btn-default headerbtn" onclick="window.location='/tagheading';">LifeUp</div>
+      				<div class="btn btn-default headerbtn" onclick="window.location='/log_tagheading'">Log</div>
+      				<div class="btn btn-default headerbtn" onclick="window.location='/activity_tagheading'">Activity</div>
+      				<div class="btn btn-default headerbtn" onclick="window.location='/settings_tagheading'">Options</div>
+      			</div>
+      		</div>
+      		{{else}}
+      		<h1 class = "header">LifeUP</h1>
+      		{{/if}}
 
-		<div class = "sub_header1"><a href="#"></a>
-			<img class = "image" src="images/uptrans.png" />
-			<div>
-				<div class= "time_with_title">Life Expectancy:</div>
-				<div class = "time" id="lifespan">{{expLifeSpan}} years </div>
-			</div>
-		</div>
-		<div class = "sub_header2">
-			<div class = "count_down_title">Life Remaining:</div>
-			<div class = "count_down"> </div>
-		</div>
-		{{#if tagHeading}}
-			<div class="btn btn-primary btn-large button" onclick="window.location='/log_tagheading';">Log Activity</div>
-			<div class="btn btn-primary btn-large button" onclick="window.location='/activity_tagheading';">My Activity</div>
-			<div class="btn btn-primary btn-large button" onclick="window.location='/settings_tagheading';">Edit Options</div>
-		{{else}}
-			<div class="btn btn-primary btn-large button" onclick="window.location='/log';">Log Activity</div>
-			<div class="btn btn-primary btn-large button" onclick="window.location='/activity';">My Activity</div>
-			<div class="btn btn-primary btn-large button" onclick="window.location='/settings';">Edit Options</div>
-		{{/if}}
-	<script>
-		var lifeExp = {{expLifeSpan}};
-		var currentAge = {{curAge}};
-        if (displayStyle == 1)
-		  $('.sub_header2').hide();
-        else if (displayStyle == 2)
-          $('.sub_header1').hide();
-		var newYear = new Date(); 
-		newYear = new Date(newYear.getFullYear() + lifeExp - currentAge, 1 - 1, 1);
-		$('.count_down').countdown({until: newYear, compact: true, 
-    		format: 'YOWDHMS', description: ''});
-		$('.sub_header1').click(function() {
-  			$('.sub_header1').hide();
-  			$('.sub_header2').show();
-            displayStyle = 2;
-		});
-		$('.sub_header2').click(function() {
-  			$('.sub_header2').hide();
-  			$('.sub_header1').show();
-            displayStyle = 1;
-		});
-	</script>
-	<script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-45820321-3', { 'cookieDomain': 'none' });
-        ga('send', 'pageview');
-    </script>
-</body>
-</html>
+      		<div class = "sub_header1"><a href="#"></a>
+      			<img class = "image" src="images/uptrans.png" />
+      			<div>
+      				<div class= "time_with_title">Life Expectancy:</div>
+      				<div class = "time" id="lifespan">{{expLifeSpan}} years </div>
+      			</div>
+      		</div>
+      		<div class = "sub_header2">
+      			<div class = "count_down_title">Life Remaining:</div>
+      			<div class = "count_down"> </div>
+      		</div>
+      		{{#if tagHeading}}
+      		<div class="btn btn-primary btn-large button" onclick="window.location='/log_tagheading';">Log Activity</div>
+      		<div class="btn btn-primary btn-large button" onclick="window.location='/activity_tagheading';">My Activity</div>
+      		<div class="btn btn-primary btn-large button" onclick="window.location='/settings_tagheading';">Edit Options</div>
+      		{{else}}
+      		<div class="btn btn-primary btn-large button" onclick="window.location='/log';">Log Activity</div>
+      		<div class="btn btn-primary btn-large button" onclick="window.location='/activity';">My Activity</div>
+      		<div class="btn btn-primary btn-large button" onclick="window.location='/settings';">Edit Options</div>
+      		{{/if}}
+      		<script>
+      			var lifeExp = {{expLifeSpan}};
+      			var currentAge = {{curAge}};
+      			if (displayStyle == 1)
+      				$('.sub_header2').hide();
+      			else if (displayStyle == 2)
+      				$('.sub_header1').hide();
+      			var newYear = new Date(); 
+      			newYear = new Date(newYear.getFullYear() + lifeExp - currentAge, 1 - 1, 1);
+      			$('.count_down').countdown({until: newYear, compact: true, 
+      				format: 'YOWDHMS', description: ''});
+      			$('.sub_header1').click(function() {
+      				$('.sub_header1').hide();
+      				$('.sub_header2').show();
+      				displayStyle = 2;
+      			});
+      			$('.sub_header2').click(function() {
+      				$('.sub_header2').hide();
+      				$('.sub_header1').show();
+      				displayStyle = 1;
+      			});
+      		</script>
+      		<script>
+      			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      			ga('create', 'UA-45820321-3', 'lifeup.herokuapp.com/');
+      			ga('send', 'pageview');
+      			if('{{tagHeading}}'=='true'){
+      				ga("send", "event", "index", "tagHeading");
+      			} else {
+      				ga("send", "event", "index", "origin");
+      			}
+      		</script>
+      	</body>
+      	</html>

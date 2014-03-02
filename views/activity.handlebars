@@ -41,11 +41,11 @@
             <div class="btn btn-default headerbtn" onclick="window.location='/log_tagheading'">Log</div>
             <div class="btn btn-default headerbtn" onclick="window.location='/activity_tagheading'">Activity</div>
             <div class="btn btn-default headerbtn" onclick="window.location='/settings_tagheading'">Options</div>
-          </div>
         </div>
-        {{else}}
-        <h1 class = "header">LifeUP</h1>
-        {{/if}}
+    </div>
+    {{else}}
+    <h1 class = "header">LifeUP</h1>
+    {{/if}}
     <br>
         <!-- <div class = "sub_header1">
             <img class = "image" src="images/uptrans.png" />
@@ -338,8 +338,13 @@
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-45820321-3', { 'cookieDomain': 'none' });
+    ga('create', 'UA-45820321-3', 'lifeup.herokuapp.com/');
     ga('send', 'pageview');
+    if('{{tagHeading}}'=='true'){
+        ga("send", "event", "activity", "tagHeading");
+    } else {
+        ga("send", "event", "activity", "origin");
+    }
 </script>
 
 </body>
