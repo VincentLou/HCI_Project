@@ -63,10 +63,10 @@
         {{#if tagHeading}}
         <div style="text-align: center">
           <div class="btn-group">
-            <div class="btn btn-default headerbtn" onclick="window.location='/tagheading';">LifeUp</div>
-            <div class="btn btn-default headerbtn" onclick="window.location='/log_tagheading'">Log</div>
-            <div class="btn btn-default headerbtn" onclick="window.location='/activity_tagheading'">Activity</div>
-            <div class="btn btn-default headerbtn" onclick="window.location='/settings_tagheading'">Options</div>
+            <div class="btn btn-default headerbtn" onclick="trackTagClick('index'); window.location='/tagheading';">LifeUp</div>
+            <div class="btn btn-default headerbtn" onclick="trackTagClick('log'); window.location='/log_tagheading'">Log</div>
+            <div class="btn btn-default headerbtn" onclick="trackTagClick('activity'); window.location='/activity_tagheading'">Activity</div>
+            <div class="btn btn-default headerbtn" onclick="trackTagClick('settings'); window.location='/settings_tagheading'">Options</div>
           </div>
         </div>
         {{else}}
@@ -391,6 +391,10 @@
     ga("send", "event", "log", "tagHeading");
   } else {
     ga("send", "event", "log", "origin");
+  }
+
+  function trackTagClick(type){
+    ga("send", "event", "log_tag_"+type, "click");
   }
 </script>
 </body>
