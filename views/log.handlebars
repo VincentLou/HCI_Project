@@ -308,12 +308,21 @@
   <div class = "count_down"> </div>
 </div>
 
+{{#if tagHeading}}
+<div class="btn-group container">
+  <div class="btn btn-default btn-large smallbutton pull-left" onclick="window.location='/tagheading';">Cancel</div>
+  <div class="btn btn-primary btn-large smallbutton pull-right" onclick="LogFunction()">Log</div>
+</div>
+<div id="continue_button" class="btn btn-primary btn-large button" onclick="window.location='/tagheading';" style="display:none;">Continue</div>
+{{else}}
 <div class="btn-group container">
   <div class="btn btn-default btn-large smallbutton pull-left" onclick="window.location='/';">Cancel</div>
   <div class="btn btn-primary btn-large smallbutton pull-right" onclick="LogFunction()">Log</div>
 </div>
-
 <div id="continue_button" class="btn btn-primary btn-large button" onclick="window.location='/';" style="display:none;">Continue</div>
+{{/if}}
+
+
 
 
 <script>
@@ -347,7 +356,7 @@
         $("#lifeIncrease_label").show().text('+' + lifeIncrease + ' years!');
       }
     });
-    
+
     $.post('/log/update', {'value':lifeExp});
   }
 </script>

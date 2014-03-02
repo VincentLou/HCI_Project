@@ -85,7 +85,11 @@
         <h3 class="header">Positive Habit Percentage Logged</h3>
         <canvas class="myChart" id="myChart2" width="320" height="320" align="center"></canvas>        
 
+        {{#if tagHeading}}
+        <div class="btn btn-primary btn-large button" onclick="window.location='/tagheading';">Done</div>
+        {{else}}
         <div class="btn btn-primary btn-large button" onclick="window.location='/';">Done</div>
+        {{/if}}
 
         <script type="text/javascript">
             function UpdateTabs(code){
