@@ -313,13 +313,13 @@
   <div class="btn btn-default btn-large smallbutton pull-left" onclick="window.location='/tagheading';">Cancel</div>
   <div class="btn btn-primary btn-large smallbutton pull-right" onclick="LogFunction()">Log</div>
 </div>
-<div id="continue_button" class="btn btn-primary btn-large button" onclick="window.location='/tagheading';" style="display:none;">Continue</div>
+<div id="continue_button" class="btn btn-primary btn-large button" onclick="window.location='/tagheading';" style="display:none;">Done</div>
 {{else}}
 <div class="btn-group container">
   <div class="btn btn-default btn-large smallbutton pull-left" onclick="window.location='/';">Cancel</div>
   <div class="btn btn-primary btn-large smallbutton pull-right" onclick="LogFunction()">Log</div>
 </div>
-<div id="continue_button" class="btn btn-primary btn-large button" onclick="window.location='/';" style="display:none;">Continue</div>
+<div id="continue_button" class="btn btn-primary btn-large button" onclick="window.location='/';" style="display:none;">Done</div>
 {{/if}}
 
 <script>
@@ -348,9 +348,9 @@
       else {
         $("#jstree").hide();
         $(".btn-group").hide();
-        $(".header").text("Life Increased!");
+        // $(".header").text("Life Increased!");
         $("#continue_button").show();
-        $("#lifeIncrease_label").show().text('+' + lifeIncrease + ' years!');
+        $("#lifeIncrease_label").show().text('Life Increased!<br>'+' + lifeIncrease + ' years!');
       }
     });
 
