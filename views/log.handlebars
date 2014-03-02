@@ -347,10 +347,10 @@
       }
       else {
         $("#jstree").hide();
-        $(".btn-group").hide();
+        $(".btn-group.container").hide();
         // $(".header").text("Life Increased!");
         $("#continue_button").show();
-        $("#lifeIncrease_label").show().text('Life Increased!<br>' + '+' + lifeIncrease + ' years!');
+        $("#lifeIncrease_label").show().html('Life Increased!<br>' + '+' + lifeIncrease + ' years!');
       }
     });
 
