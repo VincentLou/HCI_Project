@@ -46,7 +46,7 @@
 
             if(groupCount==count){
               data['groups'] = output;
-              // data['tagHeading'] = false;
+              data['tagHeading'] = false;
               console.log(data);
               res.render('log',data);
             }
@@ -99,7 +99,7 @@ exports.viewTagHeading = function(req, res){
 
             if(groupCount==count){
               data['groups'] = output;
-              data['tagHeading'] = false;
+              data['tagHeading'] = true;
               console.log(data);
               res.render('log',data);
             }

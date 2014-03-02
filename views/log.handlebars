@@ -60,15 +60,18 @@
 
     <body>
       <div class="container">
-        <!-- <h1 class = "header">LifeUP | Log</h1> -->
+        {{#if tagHeading}}
         <div style="text-align: center">
           <div class="btn-group">
-            <div class="btn btn-default headerbtn" onclick="window.location='/';">LifeUp</div>
-            <div class="btn btn-default headerbtn" onclick="window.location='/log'">Log</div>
-            <div class="btn btn-default headerbtn" onclick="window.location='/activity'">Activity</div>
-            <div class="btn btn-default headerbtn" onclick="window.location='/settings'">Options</div>
+            <div class="btn btn-default headerbtn" onclick="window.location='/tagheading';">LifeUp</div>
+            <div class="btn btn-default headerbtn" onclick="window.location='/log_tagheading'">Log</div>
+            <div class="btn btn-default headerbtn" onclick="window.location='/activity_tagheading'">Activity</div>
+            <div class="btn btn-default headerbtn" onclick="window.location='/settings_tagheading'">Options</div>
           </div>
         </div>
+        {{else}}
+        <h1 class = "header">LifeUP</h1>
+        {{/if}}
 
         <div id="jstree">
           <ul>
@@ -191,7 +194,7 @@
           },
           "plugins" : [ "checkbox","types" ]
         });
-        
+
         // $(".jstree-themeicon-hidden").removeClass("jstree-themeicon-hidden")
 
         $("#jstree").jstree("open_node", $(".jstree-node")[0]); // open first node for demonstration
@@ -249,7 +252,7 @@
   var lifeExp = {{expLifeSpan}};
   var lifeExpPreview = lifeExp;
   var currentAge = {{curAge}};
-  
+
       /*
       $(function() {
         var items = [{text: 'I ran', value: '3'},
@@ -318,59 +321,58 @@
   function LogFunction() {
     var lifeIncrease = lifeExpPreview - lifeExp;
     lifeExp = lifeExpPreview;
-        // var selections = $('#activityCheckList').checkList('getSelection');
-        var selections = $("#jstree").jstree('get_selected');
-        var action_list = '';
+    var selections = $("#jstree").jstree('get_selected');
+    var action_list = '';
 
-        if(selections.length==0){
-          return;
-        }
-        for (i=0;i<selections.length-1;++i) {
-          action_list = action_list + selections[i] + ",";
-        }
-        action_list = action_list + selections[selections.length-1];
-        $.post("log_activity", {"selections":action_list, "lifeExp": lifeExp}, function (error, response, body) {
-          if (!error && response.statusCode == 200) {
-            console.log(body);
-          }
-
-          if (lifeIncrease == 0) {
-            window.location='/';
-          }
-          else {
-            $("#jstree").hide();
-            $(".btn-group").hide();
-            $(".header").text("Life Increased!");
-            $("#continue_button").show();
-            $("#lifeIncrease_label").show().text('+' + lifeIncrease + ' years!');
-          }
-        });
-        
-        $.post('/log/update', {'value':lifeExp});
+    if(selections.length==0){
+      return;
+    }
+    for (i=0;i<selections.length-1;++i) {
+      action_list = action_list + selections[i] + ",";
+    }
+    action_list = action_list + selections[selections.length-1];
+    $.post("log_activity", {"selections":action_list, "lifeExp": lifeExp}, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log(body);
       }
-    </script>
 
-    <script>
-      var currentAge = {{curAge}};
-      $('#lifespan').text(lifeExp + ' years');
-      if (displayStyle == 1)
-        $('.sub_header2').hide();
-      else if (displayStyle == 2)
-        $('.sub_header1').hide();
-      var newYear = new Date(); 
-      newYear = new Date(newYear.getFullYear() + lifeExp - currentAge, 1 - 1, 1);
-      $('.count_down').countdown({until: newYear, compact: true, 
-        format: 'YOWDHMS', description: ''});
-      $('.sub_header1').click(function() {
-        $('.sub_header1').hide();
-        $('.sub_header2').show();
-        displayStyle = 2;
-      });
-      $('.sub_header2').click(function() {
-        $('.sub_header2').hide();
-        $('.sub_header1').show();
-        displayStyle = 1;
-      });
-    </script>
-  </body>
-  </html>
+      if (lifeIncrease == 0) {
+        window.location='/';
+      }
+      else {
+        $("#jstree").hide();
+        $(".btn-group").hide();
+        $(".header").text("Life Increased!");
+        $("#continue_button").show();
+        $("#lifeIncrease_label").show().text('+' + lifeIncrease + ' years!');
+      }
+    });
+    
+    $.post('/log/update', {'value':lifeExp});
+  }
+</script>
+
+<script>
+  var currentAge = {{curAge}};
+  $('#lifespan').text(lifeExp + ' years');
+  if (displayStyle == 1)
+    $('.sub_header2').hide();
+  else if (displayStyle == 2)
+    $('.sub_header1').hide();
+  var newYear = new Date(); 
+  newYear = new Date(newYear.getFullYear() + lifeExp - currentAge, 1 - 1, 1);
+  $('.count_down').countdown({until: newYear, compact: true, 
+    format: 'YOWDHMS', description: ''});
+  $('.sub_header1').click(function() {
+    $('.sub_header1').hide();
+    $('.sub_header2').show();
+    displayStyle = 2;
+  });
+  $('.sub_header2').click(function() {
+    $('.sub_header2').hide();
+    $('.sub_header1').show();
+    displayStyle = 1;
+  });
+</script>
+</body>
+</html>

@@ -56,9 +56,9 @@ app.get('/tagheading', index.viewTagHeading);
 app.get('/log', log.view);
 app.get('/log_tagheading', log.viewTagHeading);
 app.get('/activity', activity.view);
-// app.get('/activity/tagheading', activity.viewTagHeading);
+app.get('/activity_tagheading', activity.viewTagHeading);
 app.get('/settings', settings.view);
-// app.get('/settings/tagheading', settings.viewTagHeading);
+app.get('/settings_tagheading', settings.viewTagHeading);
 
 app.post('/log/update', log.update);
 app.post('/log_activity', log_activity.add);

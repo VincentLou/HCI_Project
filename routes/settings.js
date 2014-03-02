@@ -43,6 +43,51 @@ exports.view = function(req, res){
 	}
 };
 
+exports.viewTagHeading = function(req, res){
+
+	var models = require('../models');
+	models.Group.find().exec(afterQuery);
+
+	function afterQuery(err, group) {
+		if(err) console.log(err);
+		var output = [];
+		var groupCount = 0;
+		var count = group.length;
+		var max_group_id = 0;
+		var max_item_id = 0;
+		for(var i=0; i<count; i++) {
+			var json = group[i];
+			if(json.id>max_group_id){
+				max_group_id = json.id;
+			}
+			output.push({'name':json.name, 'id':json.id, 'items':[]});
+			models.ActionType.find({"group_id":json.id}).exec(afterQueryAction);
+			function afterQueryAction(err, items) {
+				if(err) console.log(err);
+				var itemArr = [];
+				for(var j=0; j<items.length; j++) {
+					itemArr.push({"name": items[j].name, "id":items[j].id});
+					if(max_item_id<items[j].id){
+						max_item_id = items[j].id;
+					}
+				}
+				if(items.length!=0){
+					for(var k=0; k<output.length; k++){
+						if(output[k].id == items[0].group_id) {
+							output[k].items=itemArr;
+						}
+					}
+				}
+				groupCount = groupCount + 1;
+				if(groupCount==count){
+					var finalOutput = {'groups': output, 'max_group_id':max_group_id, 'max_item_id':max_item_id, 'tagHeading':true};
+					res.render('settings',finalOutput);
+				}
+			}
+		}
+	}
+};
+
 exports.addGroup = function(req, res) {
   var form_data = req.body;
   var models = require('../models');
